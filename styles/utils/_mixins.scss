@@ -1,0 +1,9 @@
+@mixin headings($font-size) {
+	font-size: $font-size;
+	line-height: 1.2;
+}
+
+@mixin radio-btn-after($width, $left) {
+	width: $width;
+	transform: translate($left, -35%);
+}

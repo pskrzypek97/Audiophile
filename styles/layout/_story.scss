@@ -1,0 +1,35 @@
+.story {
+	display: flex;
+	justify-content: space-between;
+
+	& > picture {
+		margin-left: 10rem;
+
+		@media only screen and (max-width: $bp-big) {
+			margin-left: 5rem;
+		}
+
+		@media only screen and (max-width: $bp-medium) {
+			margin-left: 0;
+			margin-bottom: 6rem;
+		}
+	}
+
+	&__left {
+		width: 50%;
+		align-self: center;
+
+		& > *:first-child {
+			margin-bottom: 3rem;
+		}
+
+		@media only screen and (max-width: $bp-medium) {
+			width: 80%;
+			text-align: center;
+		}
+	}
+
+	@media only screen and (max-width: $bp-medium) {
+		flex-direction: column-reverse;
+	}
+}

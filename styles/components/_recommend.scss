@@ -1,0 +1,184 @@
+.recommend {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(4, 30rem);
+	grid-template-areas:
+		'zx9 zx9'
+		'zx9 zx9'
+		'zx7 zx7'
+		'img yx1';
+
+	grid-row-gap: 4rem;
+	grid-column-gap: 2rem;
+
+	@media only screen and (max-width: $bp-small) {
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(5, 25rem);
+		grid-template-areas:
+			'zx9'
+			'zx9'
+			'zx7'
+			'img'
+			'yx1';
+	}
+
+	& > * {
+		border-radius: 1rem;
+	}
+
+	&__zx9 {
+		position: relative;
+		grid-area: zx9;
+		padding-inline: 10%;
+		display: flex;
+		align-items: flex-end;
+
+		background-color: $color-beige-dark;
+		background-image: url(../../public/assets/home/desktop/pattern-circles.svg);
+		background-repeat: no-repeat;
+		background-size: 70%;
+		background-position: -15rem 0rem;
+
+		overflow: hidden;
+
+		& > img {
+			position: absolute;
+			height: 80%;
+
+			top: 14rem;
+
+			@media only screen and (max-width: $bp-large) {
+				height: 60%;
+				top: 27rem;
+			}
+
+			@media only screen and (max-width: $bp-medium) {
+				position: relative;
+				height: 35%;
+
+				top: 0;
+			}
+		}
+
+		& > article {
+			margin-left: auto;
+			width: 35rem;
+			align-self: center;
+
+			& > *:not(:last-child) {
+				margin-bottom: 3rem;
+			}
+
+			& > p {
+				color: $color-white;
+			}
+
+			& > a {
+				background-color: $color-black;
+			}
+
+			@media only screen and (max-width: $bp-large) {
+				align-self: flex-end;
+				margin-left: 40rem;
+				margin-bottom: 3rem;
+			}
+
+			@media only screen and (max-width: $bp-medium) {
+				text-align: center;
+				align-self: center;
+				margin: 0;
+			}
+		}
+
+		@media only screen and (max-width: $bp-large) {
+			background-size: 70%;
+			background-position: -1rem 16rem;
+		}
+
+		@media only screen and (max-width: $bp-medium) {
+			padding-block: 3rem;
+
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-around;
+
+			background-size: 125%;
+			background-position: center -35rem;
+		}
+
+		@media only screen and (max-width: $bp-small) {
+			background-position: center -10rem;
+		}
+	}
+
+	&__zx7 {
+		grid-area: zx7;
+
+		padding-left: 10rem;
+
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+
+		background-image: url(../../public/assets/home/desktop/image-speaker-zx7.jpg);
+		background-repeat: no-repeat;
+		background-position: right;
+		background-size: cover;
+
+		& > *:last-child {
+			margin-top: 2.5rem;
+			background-color: inherit;
+			color: $color-black;
+			border: 1px solid $color-black;
+		}
+
+		@media only screen and (max-width: $bp-big) {
+			padding-left: 5rem;
+		}
+
+		@media only screen and (max-width: $bp-medium) {
+			background-position: center;
+		}
+
+		@media only screen and (max-width: $bp-small) {
+			background-image: url(../../public/assets/home/mobile/image-speaker-zx7.jpg);
+			background-position: left;
+		}
+	}
+
+	& > picture {
+		grid-area: img;
+
+		& > img {
+			@extend %img-object-fit;
+		}
+	}
+
+	&__yx1 {
+		grid-area: yx1;
+		padding-left: 10rem;
+
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+
+		background-color: $color-grey;
+
+		& > *:last-child {
+			margin-top: 3rem;
+			background-color: inherit;
+			color: $color-black;
+			border: 1px solid $color-black;
+		}
+
+		@media only screen and (max-width: $bp-big) {
+			padding-left: 5rem;
+		}
+
+		@media only screen and (max-width: $bp-medium) {
+			padding-left: 2.5rem;
+		}
+	}
+}

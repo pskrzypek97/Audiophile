@@ -1,0 +1,126 @@
+.btn {
+	display: inline-block;
+
+	text-decoration: none;
+
+	color: $color-white;
+	background-color: $color-beige-dark;
+
+	cursor: pointer;
+
+	&--see-product {
+		border: none;
+		padding-block: 1.1rem;
+		padding-inline: 2.5rem;
+
+		font-size: 1.3rem;
+		text-transform: uppercase;
+		text-decoration: none;
+		letter-spacing: 0.2rem;
+		text-align: center;
+	}
+
+	&--social-media {
+		display: inline;
+		padding: 0;
+
+		width: 2.5rem;
+		height: 2.5rem;
+
+		background-color: inherit;
+
+		& svg {
+			height: inherit;
+			width: inherit;
+			fill: $color-white;
+			transition: fill 0.3s;
+
+			&:hover,
+			&:active {
+				fill: $color-beige-dark;
+			}
+		}
+
+		&:not(:last-of-type) {
+			margin-right: 2rem;
+		}
+	}
+
+	&--shop {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-end;
+
+		width: 31%;
+		height: 20rem;
+		padding-bottom: 1rem;
+
+		color: $color-black;
+		background-color: $color-grey;
+
+		border-radius: 1rem;
+
+		& > * {
+			margin-bottom: 1.5rem;
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			display: block;
+			height: 20rem;
+			width: 20rem;
+			top: -7rem;
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+
+		&:nth-of-type(1)::before {
+			background-image: url(../../public/assets/shared/desktop/image-category-thumbnail-headphones.png);
+		}
+
+		&:nth-of-type(2)::before {
+			background-image: url(../../public/assets/shared/desktop/image-category-thumbnail-speakers.png);
+		}
+
+		&:nth-of-type(3)::before {
+			background-image: url(../../public/assets/shared/desktop/image-category-thumbnail-earphones.png);
+		}
+
+		&:hover,
+		&:active {
+			& div span {
+				color: $color-beige-dark;
+			}
+		}
+	}
+
+	&--back {
+		font-size: 1.5rem;
+		border: none;
+
+		background-color: inherit;
+		color: $color-white-darken;
+	}
+
+	&--amount {
+		height: 100%;
+		width: 30%;
+
+		font-size: 1.3rem;
+		font-weight: $font-weight-bold;
+
+		color: $color-white-darken;
+		background-color: inherit;
+		border: none;
+	}
+
+	&--remove {
+		background-color: inherit;
+		color: $color-white-darken;
+		border: none;
+		text-decoration: underline;
+	}
+}

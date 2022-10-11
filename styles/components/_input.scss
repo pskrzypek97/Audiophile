@@ -1,0 +1,142 @@
+.input {
+	width: 100%;
+	outline: none;
+	border: 1px solid darken($color-white, 20%);
+	border-radius: 0.7rem;
+
+	&--text {
+		height: 5rem;
+		padding: 2rem;
+
+		font-weight: $font-weight-bold;
+
+		&::placeholder {
+			color: darken($color-white, 60%);
+		}
+	}
+
+	&--radio {
+		position: relative;
+		height: 2rem;
+		width: 2rem;
+		border-radius: 50%;
+		appearance: none;
+		margin-left: 2.5rem;
+		display: flex;
+		justify-content: center;
+
+		cursor: pointer;
+
+		&:checked {
+			&::before {
+				background-color: $color-beige-dark;
+			}
+
+			&::after {
+				border-color: $color-beige-dark;
+			}
+		}
+
+		// dot inside radio button
+		&::before {
+			content: '';
+			position: absolute;
+			height: 1rem;
+			width: 1rem;
+			border-radius: inherit;
+			align-self: center;
+		}
+
+		// border around radio button
+		&::after {
+			content: '';
+			position: absolute;
+			height: 5rem;
+			width: 23vw;
+			transform: translate(43%, -35%);
+			border: 1px solid darken($color-white, 20%);
+			border-radius: 0.7rem;
+
+			@media only screen and (max-width: $bp-large) {
+				@include radio-btn-after(20vw, 38%);
+			}
+
+			@media only screen and (max-width: $bp-big) {
+				@include radio-btn-after(25vw, 38%);
+			}
+
+			@media only screen and (max-width: $bp-medium) {
+				@include radio-btn-after(40vw, 38%);
+			}
+
+			@media only screen and (max-width: $bp-small) {
+				@include radio-btn-after(78vw, 44%);
+			}
+
+			@media only screen and (max-width: $bp-tiny) {
+				@include radio-btn-after(72vw, 41.5%);
+			}
+		}
+
+		@media only screen and (max-width: $bp-small) {
+			margin-left: 1.8rem;
+		}
+	}
+
+	// div containing label and input
+	&__container {
+		display: flex;
+		flex-direction: column;
+
+		&--radio {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+
+			// targets main label
+			& > label {
+				align-self: flex-start;
+			}
+
+			@media only screen and (max-width: $bp-small) {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+		}
+
+		// targets all labels
+		& label {
+			font-size: 1.4rem;
+			font-weight: $font-weight-bold;
+
+			margin-bottom: 0.5rem;
+		}
+	}
+
+	// container containing both radio buttons
+	&__radio-container {
+		margin-left: auto;
+		margin-top: 2rem;
+		width: 50%;
+
+		& > div {
+			display: flex;
+			align-items: center;
+		}
+
+		// targets labels next to radio buttons
+		& label {
+			margin-bottom: 0;
+			margin-left: 2rem;
+		}
+
+		& > *:not(:last-child) {
+			margin-bottom: 4.5rem;
+		}
+
+		@media only screen and (max-width: $bp-small) {
+			margin-left: 0;
+			width: 100%;
+		}
+	}
+}

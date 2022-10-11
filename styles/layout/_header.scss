@@ -1,0 +1,60 @@
+.header {
+	padding-inline: 10%;
+
+	background-color: #191919;
+
+	&--home {
+		height: 56rem;
+
+		display: flex;
+
+		background-image: url(../../public/assets/home/tablet/image-header.jpg);
+		background-repeat: no-repeat;
+		background-position: 90% 95%;
+		background-size: 65rem;
+
+		@media only screen and (max-width: $bp-medium) {
+			background-position: center bottom;
+		}
+	}
+
+	&--category {
+		height: 28rem;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__text {
+		width: 55%;
+
+		padding-right: 15rem;
+		align-self: center;
+
+		& > *:not(:last-child) {
+			margin-bottom: 3rem;
+		}
+
+		& > *:first-child {
+			margin-bottom: 1rem;
+		}
+
+		@media only screen and (max-width: $bp-large) {
+			padding-right: 0;
+		}
+
+		@media only screen and (max-width: $bp-medium) {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			padding-inline: 20%;
+		}
+	}
+
+	@media only screen and (max-width: $bp-big) {
+		padding-inline: 3%;
+	}
+}

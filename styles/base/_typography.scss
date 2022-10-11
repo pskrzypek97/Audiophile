@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap');
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: $font-weight-bold;
+	text-transform: uppercase;
+}
+
+p {
+	font-weight: $font-weight-medium;
+}
+
+.heading-1 {
+	@include headings(5.6rem);
+	color: $color-white;
+
+	@media only screen and (max-width: $bp-small) {
+		font-size: 3.6rem;
+	}
+}
+
+.heading-2 {
+	@include headings(4rem);
+
+	&--category {
+		color: $color-white;
+		letter-spacing: 0.3rem;
+	}
+
+	& span {
+		color: $color-beige-dark;
+	}
+
+	@media only screen and (max-width: $bp-small) {
+		font-size: 2.8rem;
+	}
+}
+
+.heading-3 {
+	@include headings(3.2rem);
+
+	@media only screen and (max-width: $bp-small) {
+		font-size: 2.4rem;
+	}
+}
+
+.heading-4 {
+	font-size: 2.8rem;
+}
+
+.heading-5 {
+	font-size: 2.4rem;
+}
+
+.heading-6 {
+	font-size: 1.8rem;
+
+	@media only screen and (max-width: $bp-small) {
+		font-size: 1.5rem;
+	}
+}
+
+.paragraph {
+	font-size: 1.5rem;
+	font-weight: $font-weight-medium;
+	color: lighten($color-black, 35%);
+
+	&--white {
+		color: $color-white-darken;
+	}
+
+	&--header {
+		color: darken($color-white, 20%);
+	}
+
+	&--product {
+		font-weight: $font-weight-bold;
+		color: $color-black;
+		text-transform: uppercase;
+	}
+
+	&--summary {
+		text-transform: uppercase;
+	}
+
+	& span {
+		color: $color-beige-dark;
+	}
+}
+
+.span {
+	display: inline-block;
+	font-size: 1.4rem;
+	font-weight: $font-weight-regular;
+	text-transform: uppercase;
+
+	&--new {
+		letter-spacing: 1rem;
+		color: $color-beige-light;
+	}
+
+	&--index {
+		color: $color-white-darken;
+	}
+
+	&--checkout {
+		font-size: 1.3rem;
+		color: $color-beige-dark;
+		font-weight: $font-weight-bold;
+		letter-spacing: 0.1rem;
+	}
+
+	&--summary {
+		color: $color-white-darken;
+		font-weight: $font-weight-bold;
+	}
+}

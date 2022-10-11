@@ -1,0 +1,112 @@
+.navigation {
+	position: relative;
+
+	height: 9rem;
+	padding-inline: 10%;
+
+	background-color: #191919;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	&::after {
+		content: '';
+		position: absolute;
+		width: 78%;
+		height: 1px;
+		background-color: darken($color-white, 70%);
+		top: 8.9rem;
+		left: 10%;
+
+		@media only screen and (max-width: $bp-big) {
+			width: 90%;
+			left: 3%;
+		}
+	}
+
+	@media only screen and (max-width: $bp-big) {
+		padding-inline: 3%;
+	}
+
+	@media only screen and (max-width: $bp-medium) {
+		justify-content: flex-start;
+	}
+
+	@media only screen and (max-width: $bp-small) {
+		justify-content: space-between;
+	}
+}
+
+.logo {
+	height: 4rem;
+	width: 18rem;
+
+	@media only screen and (max-width: $bp-large) {
+		margin-right: 2rem;
+	}
+
+	@media only screen and (max-width: $bp-medium) {
+		margin-right: auto;
+	}
+
+	@media only screen and (max-width: $bp-small) {
+		margin-right: 0;
+	}
+}
+
+.cart {
+	height: 2rem;
+	width: 2rem;
+	margin-right: 4rem;
+
+	fill: $color-white;
+
+	transition: all 0.5s;
+	cursor: pointer;
+
+	&:hover,
+	&:active {
+		fill: $color-beige-dark;
+	}
+
+	@media only screen and (max-width: $bp-medium) {
+		margin-left: auto;
+	}
+
+	@media only screen and (max-width: $bp-medium) {
+		margin-left: 0;
+		margin-right: 3rem;
+	}
+}
+
+.hamburger-menu {
+	height: 2rem;
+	width: 2rem;
+	margin-right: 5rem;
+
+	display: none;
+
+	@media only screen and (max-width: $bp-medium) {
+		display: block;
+	}
+
+	@media only screen and (max-width: $bp-small) {
+		margin-right: 0;
+	}
+
+	&__menu {
+		// display: none;
+		position: absolute;
+		width: 100%;
+		top: 9rem;
+		left: 0;
+
+		padding: 3rem;
+
+		background-color: $color-white;
+		border-bottom-left-radius: 1rem;
+		border-bottom-right-radius: 1rem;
+		z-index: 100;
+	}
+}

@@ -1,0 +1,57 @@
+.features {
+	display: flex;
+
+	& > *:first-child {
+		width: 60%;
+		margin-right: 20rem;
+
+		@media only screen and (max-width: $bp-large) {
+			margin-right: 7.5rem;
+		}
+
+		@media only screen and (max-width: $bp-medium) {
+			width: 100%;
+			margin-right: 0;
+			margin-bottom: 7rem;
+		}
+	}
+
+	& div > *:not(:last-child) {
+		margin-bottom: 1.5rem;
+	}
+
+	&__gadget {
+		list-style: none;
+
+		&:not(:last-of-type) {
+			margin-bottom: 0.5rem;
+		}
+
+		& span {
+			font-weight: $font-weight-bold;
+			margin-right: 2rem;
+		}
+	}
+
+	& > *:last-child {
+		@media only screen and (max-width: $bp-medium) {
+			display: flex;
+
+			& h3 {
+				margin-right: 10rem;
+			}
+		}
+
+		@media only screen and (max-width: $bp-medium) {
+			flex-direction: column;
+
+			& h3 {
+				margin-right: 0;
+			}
+		}
+	}
+
+	@media only screen and (max-width: $bp-medium) {
+		flex-direction: column;
+	}
+}

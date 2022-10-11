@@ -1,0 +1,25 @@
+// COLOR VARIABLES
+
+$color-beige-dark: #d87d4a;
+$color-beige-light: #fbaf85;
+$color-black: #101010;
+$color-black-pitch: #000;
+$color-grey: #f1f1f1;
+$color-grey-light: #fafafa;
+$color-white: #fff;
+$color-white-darken: darken($color-white, 40%);
+
+// TYPOGRAPHY VARIABLES
+
+$font-primary: 'Manrope', sans-serif;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// BREAKPOINT VARIABLES
+
+$bp-large: 78.125em; //1250px/16
+$bp-big: 62.5em; //1000px/16
+$bp-medium: 53.125em; //850px/16
+$bp-small: 37.5em; //600px/16
+$bp-tiny: 34.375em; //550px/16

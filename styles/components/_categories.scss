@@ -1,0 +1,45 @@
+.categories {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+
+	&--hamburger-menu {
+		@media only screen and (max-width: $bp-medium) {
+			margin-top: 7rem;
+		}
+	}
+
+	&__shop {
+		display: flex;
+		align-items: center;
+
+		& span {
+			font-size: 1.3rem;
+			text-transform: uppercase;
+			color: $color-white-darken;
+			margin-right: 1rem;
+		}
+
+		& svg {
+			height: 1.3rem;
+			width: 1.3rem;
+		}
+	}
+
+	@media only screen and (max-width: $bp-medium) {
+		margin-top: 15rem;
+	}
+
+	@media only screen and (max-width: $bp-small) {
+		flex-direction: column;
+		align-items: center;
+
+		& a {
+			width: 100%;
+		}
+
+		& a:not(:last-of-type) {
+			margin-bottom: 8rem;
+		}
+	}
+}

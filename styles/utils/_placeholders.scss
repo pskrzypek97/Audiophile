@@ -1,0 +1,13 @@
+%margin-inline-10 {
+	margin-inline: 10%;
+
+	@media only screen and (max-width: $bp-big) {
+		margin-inline: 3%;
+	}
+}
+
+%img-object-fit {
+	width: 100%; //required to use object-fit
+	height: 100%; //required to use object-fit
+	object-fit: cover; //puts images in their containers (no overlapping) with their aspect ratio
+}
