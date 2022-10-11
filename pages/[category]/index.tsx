@@ -4,7 +4,7 @@ import { data } from '../../data/data';
 
 import Product from '../../components/Product/Product';
 import Categories from '../../components/Categories/Categories';
-// import Header from '../../components/Header/Header';
+import Header from '../../components/Header/Header';
 import Story from '../../components/Story/Story';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -41,11 +41,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 const CategoryPage = ({ products }) => {
 	return (
 		<>
-			<header className="header header--category">
-				<h2 className="heading-2 heading-2--category">
-					{products[0].category}
-				</h2>
-			</header>
+			<Header category={products[0].category} />
 			<section className="product">
 				{products.map((product) => (
 					<Product product={product} />

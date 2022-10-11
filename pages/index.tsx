@@ -8,7 +8,7 @@ import Story from '../components/Story/Story';
 export default function Home() {
 	return (
 		<>
-			<Header />
+			<Header category={false} />
 			<Categories />
 			<Recommend />
 			<Story />
