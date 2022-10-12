@@ -1,9 +1,9 @@
 .product {
 	display: flex;
-	flex-direction: column-reverse;
+	flex-direction: column;
 
 	& > *:not(:last-child) {
-		margin-top: 15rem;
+		margin-bottom: 15rem;
 	}
 
 	& > *:nth-child(2n) {

@@ -1,8 +1,6 @@
 import React from 'react';
 
-type Category = string | boolean;
-
-const Header = ({ category }: Category) => {
+const Header = ({ category }) => {
 	if (category) {
 		return (
 			<header className="header header--category">

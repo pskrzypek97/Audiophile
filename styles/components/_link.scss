@@ -3,12 +3,6 @@
 
 	list-style: none;
 
-	&--nav {
-		@media only screen and (max-width: $bp-medium) {
-			display: none;
-		}
-	}
-
 	@media only screen and (max-width: $bp-medium) {
 		align-self: flex-start;
 		margin-top: 3rem;

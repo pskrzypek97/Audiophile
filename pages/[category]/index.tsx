@@ -1,6 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 
-import { data } from '../../data/data';
+import { data } from '../../data/shopData';
 
 import Product from '../../components/Product/Product';
 import Categories from '../../components/Categories/Categories';
@@ -44,7 +44,7 @@ const CategoryPage = ({ products }) => {
 			<Header category={products[0].category} />
 			<section className="product">
 				{products.map((product) => (
-					<Product product={product} />
+					<Product key={product.id} product={product} />
 				))}
 			</section>
 			<Categories />

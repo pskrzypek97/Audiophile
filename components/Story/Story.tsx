@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Story = () => {
 	return (
 		<section className="story">
@@ -18,16 +16,16 @@ const Story = () => {
 			</div>
 
 			<picture>
-				{/* <source
-						srcset="./assets/shared/mobile/image-best-gear.jpg"
-						media="(max-width: 600px)"
-					/>
-					<source
-						srcset="./assets/shared/tablet/image-best-gear.jpg"
-						media="(max-width: 850px)"
-					/> */}
+				<source
+					srcSet="./assets/shared/mobile/image-best-gear.jpg"
+					media="(max-width: 600px)"
+				/>
+				<source
+					srcSet="./assets/shared/tablet/image-best-gear.jpg"
+					media="(max-width: 850px)"
+				/>
 				<img
-					src="assets/shared/desktop/image-best-gear.jpg"
+					src="/assets/shared/desktop/image-best-gear.jpg"
 					alt="Man listening to music"
 				/>
 			</picture>

@@ -6,7 +6,7 @@ const Categories = () => {
 	return (
 		<section className="categories">
 			{categories.map((category) => (
-				<Link href={`/${category}`}>
+				<Link key={category} href={`/${category}`}>
 					<a className="btn btn--shop" href="#">
 						<h6 className="heading-6">{category}</h6>
 						<div className="categories__shop">

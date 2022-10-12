@@ -25,6 +25,12 @@
 		}
 	}
 
+	& > ul {
+		@media only screen and (max-width: $bp-medium) {
+			display: none;
+		}
+	}
+
 	@media only screen and (max-width: $bp-big) {
 		padding-inline: 3%;
 	}
