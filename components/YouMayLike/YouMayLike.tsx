@@ -1,3 +1,5 @@
+import SeeProduct from '../UI/SeeProduct';
+
 const YouMayLike = ({ others }) => {
 	return (
 		<section className="you-may-like">
@@ -17,9 +19,7 @@ const YouMayLike = ({ others }) => {
 							/>
 						</picture>
 						<h5 className="heading-5">{other.name}</h5>
-						<a href="#" className="btn btn--see-product">
-							see product
-						</a>
+						<SeeProduct url={`/${other.category}/${other.slug}`} />
 					</div>
 				))}
 			</div>

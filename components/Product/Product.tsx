@@ -1,8 +1,16 @@
+import { useRouter } from 'next/router';
+
 import SeeProduct from '../../components/UI/SeeProduct';
+import QuantityButtons from '../../components/UI/QuantityButtons';
 
 interface ProductProp {
 	product: {
 		categoryImage: {
+			mobile: string;
+			tablet: string;
+			desktop: string;
+		};
+		image: {
 			mobile: string;
 			tablet: string;
 			desktop: string;
@@ -12,28 +20,50 @@ interface ProductProp {
 		description: string;
 		slug: string;
 		category: string;
+		price: number;
 	};
 }
 
 const Product = ({ product }: ProductProp) => {
+	const router = useRouter();
+
+	const isProductPage = /\/.*\//.test(router.asPath);
+
+	const productImage = isProductPage ? product.image : product.categoryImage;
+
 	return (
-		<div className="product__container product__container--category">
+		<div
+			className={`product__container ${
+				isProductPage ? '' : 'product__container--category'
+			}`}
+		>
 			<picture>
 				<source
-					srcSet={product.categoryImage.mobile.substring(1)}
+					srcSet={productImage.mobile.substring(1)}
 					media="(max-width: 600px)"
 				/>
 				<source
-					srcSet={product.categoryImage.tablet.substring(1)}
+					srcSet={productImage.tablet.substring(1)}
 					media="(max-width: 850px)"
 				/>
-				<img src={product.categoryImage.desktop.substring(1)} />
+				<img
+					src={productImage.desktop.substring(1)}
+					className="product__image"
+				/>
 			</picture>
 			<article className="product__detail">
 				{product.new && <span className="span span--new">new product</span>}
 				<h2 className="heading-2">{product.name}</h2>
 				<p className="paragraph">{product.description}</p>
-				<SeeProduct url={`/${product.category}/${product.slug}`} />
+				{isProductPage && (
+					<>
+						<h6 className="heading-6">$ {product.price}</h6>
+						<QuantityButtons />
+					</>
+				)}
+				{!isProductPage && (
+					<SeeProduct url={`/${product.category}/${product.slug}`} />
+				)}
 			</article>
 		</div>
 	);

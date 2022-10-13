@@ -39,6 +39,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const CategoryPage = ({ products }) => {
+	products.sort((a, b) => a.id < b.id);
+
 	return (
 		<>
 			<Header category={products[0].category} />

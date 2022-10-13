@@ -3,7 +3,9 @@ const Features = ({ features, includes }) => {
 		<section className="features">
 			<div>
 				<h3 className="heading-3">features</h3>
-				<p className="paragraph">{features}</p>
+				<p style={{ whiteSpace: 'pre-line' }} className="paragraph">
+					{features}
+				</p>
 			</div>
 			<div>
 				<h3 className="heading-3">in the box</h3>
