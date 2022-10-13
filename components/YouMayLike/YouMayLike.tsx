@@ -1,6 +1,8 @@
+import { ProductData } from '../../models/product';
+
 import SeeProduct from '../UI/SeeProduct';
 
-const YouMayLike = ({ others }) => {
+const YouMayLike = ({ others }: { others: ProductData['others'] }) => {
 	return (
 		<section className="you-may-like">
 			<h3 className="heading-3">you may also like</h3>

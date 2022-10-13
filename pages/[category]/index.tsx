@@ -1,6 +1,7 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 
 import { data } from '../../data/shopData';
+import { ProductData } from '../../models/product';
 
 import Product from '../../components/Product/Product';
 import Categories from '../../components/Categories/Categories';
@@ -38,12 +39,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 	};
 };
 
-const CategoryPage = ({ products }) => {
-	products.sort((a, b) => a.id < b.id);
+const CategoryPage = ({ products }: { products: ProductData[] }) => {
+	products.sort((a, b) => a.id + b.id);
 
 	return (
 		<>
-			<Header category={products[0].category} />
+			<Header category={products[0]?.category} />
 			<section className="product">
 				{products.map((product) => (
 					<Product key={product.id} product={product} />

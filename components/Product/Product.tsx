@@ -1,30 +1,11 @@
 import { useRouter } from 'next/router';
 
+import { ProductData } from '../../models/product';
+
 import SeeProduct from '../../components/UI/SeeProduct';
 import QuantityButtons from '../../components/UI/QuantityButtons';
 
-interface ProductProp {
-	product: {
-		categoryImage: {
-			mobile: string;
-			tablet: string;
-			desktop: string;
-		};
-		image: {
-			mobile: string;
-			tablet: string;
-			desktop: string;
-		};
-		new: boolean;
-		name: string;
-		description: string;
-		slug: string;
-		category: string;
-		price: number;
-	};
-}
-
-const Product = ({ product }: ProductProp) => {
+const Product = ({ product }: { product: ProductData }) => {
 	const router = useRouter();
 
 	const isProductPage = /\/.*\//.test(router.asPath);

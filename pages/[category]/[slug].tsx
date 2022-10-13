@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 
 import { data } from '../../data/shopData';
+import { ProductData } from '../../models/product';
 
 import Categories from '../../components/Categories/Categories';
 import Story from '../../components/Story/Story';
@@ -38,7 +39,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 	};
 };
 
-const ProductPage = ({ product }) => {
+const ProductPage = ({ product }: { product: ProductData }) => {
 	const router = useRouter();
 
 	return (

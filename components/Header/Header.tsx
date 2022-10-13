@@ -1,6 +1,8 @@
-import React from 'react';
+import { ProductData } from '../../models/product';
 
-const Header = ({ category }) => {
+import SeeProduct from '../UI/SeeProduct';
+
+const Header = ({ category }: { category: ProductData['category'] }) => {
 	if (category) {
 		return (
 			<header className="header header--category">
@@ -17,9 +19,7 @@ const Header = ({ category }) => {
 						Experience natural, lifelike audio and exceptional build quality
 						made for the passionate music enthusiast.
 					</p>
-					<a href="#" className="btn btn--see-product">
-						see product
-					</a>
+					<SeeProduct url={'/headphones/xx99-mark-two-headphones'} />
 				</article>
 			</header>
 		);

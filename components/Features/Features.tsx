@@ -1,4 +1,12 @@
-const Features = ({ features, includes }) => {
+import { ProductData } from '../../models/product';
+
+const Features = ({
+	features,
+	includes,
+}: {
+	features: ProductData['features'];
+	includes: ProductData['includes'];
+}) => {
 	return (
 		<section className="features">
 			<div>
