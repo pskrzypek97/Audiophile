@@ -8,7 +8,7 @@ const Links = () => {
 	return (
 		<ul className="links">
 			{links.map((link) => (
-				<Link key={link} href={`/${link}`}>
+				<Link key={link} href={link === 'home' ? `/` : `/${link}`}>
 					<a className="link">{link}</a>
 				</Link>
 			))}
