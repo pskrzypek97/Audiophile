@@ -8,7 +8,7 @@ const SocialMedia = () => {
 			{socialMedia.map((sm) => (
 				<a key={sm} className="btn btn--social-media" href="#">
 					<svg>
-						<use href={`sprite.svg#icon-${sm}`} />
+						<use href={`/sprite.svg#icon-${sm}`} />
 					</svg>
 				</a>
 			))}

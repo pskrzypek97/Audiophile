@@ -17,11 +17,11 @@ const Story = () => {
 
 			<picture>
 				<source
-					srcSet="./assets/shared/mobile/image-best-gear.jpg"
+					srcSet="/assets/shared/mobile/image-best-gear.jpg"
 					media="(max-width: 600px)"
 				/>
 				<source
-					srcSet="./assets/shared/tablet/image-best-gear.jpg"
+					srcSet="/assets/shared/tablet/image-best-gear.jpg"
 					media="(max-width: 850px)"
 				/>
 				<img

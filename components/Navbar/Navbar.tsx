@@ -6,13 +6,13 @@ const Navbar = () => {
 		<nav className="navigation">
 			<Hamburger />
 			<svg className="logo">
-				<use href="sprite.svg#logo" />
+				<use href="/sprite.svg#logo" />
 			</svg>
 
 			<Links />
 
 			<svg className="cart">
-				<use href="sprite.svg#icon-cart"></use>
+				<use href="/sprite.svg#icon-cart"></use>
 			</svg>
 		</nav>
 	);
