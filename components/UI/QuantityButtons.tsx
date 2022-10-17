@@ -6,9 +6,7 @@ const QuantityButtons = () => {
 				<span>1</span>
 				<button className="btn btn--amount">+</button>
 			</div>
-			<a href="#" className="btn btn--see-product">
-				add to cart
-			</a>
+			<button className="btn btn--see-product">add to cart</button>
 		</div>
 	);
 };
