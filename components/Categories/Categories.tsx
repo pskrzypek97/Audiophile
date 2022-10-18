@@ -12,7 +12,7 @@ const Categories = () => {
 						<div className="categories__shop">
 							<span>shop</span>
 							<svg className="arrow-right">
-								<use href="sprite.svg#icon-arrow-right"></use>
+								<use href="/sprite.svg#icon-arrow-right"></use>
 							</svg>
 						</div>
 					</a>

@@ -2,7 +2,11 @@ import { ProductData } from '../../models/product';
 
 import SeeProduct from '../UI/SeeProduct';
 
-const Header = ({ category }: { category: ProductData['category'] }) => {
+const Header = ({
+	category,
+}: {
+	category: ProductData['category'] | false;
+}) => {
 	if (category) {
 		return (
 			<header className="header header--category">
