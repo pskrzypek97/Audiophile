@@ -1,13 +1,13 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
 
 import { removeAll } from '../../store/cart';
 
 import ModalProduct from './ModalProduct';
 
 const Cart = () => {
-	const { cart } = useSelector((state) => state.cart);
+	const { cart } = useAppSelector((state) => state.cart);
 
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	const total =
 		cart.length === 1

@@ -1,14 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { useRouter } from 'next/router';
 
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../../store/hooks';
 import { addToCart } from '../../store/cart';
 
 import { ProductData } from '../../models/product';
+import { ChosenProduct } from '../../models/chosenProduct';
 
 import SeeProduct from '../../components/UI/SeeProduct';
 // import QuantityButtons from '../../components/UI/QuantityButtons';
+
+const removeCategory = (productName: ChosenProduct['name']) => {
+	const categories = ['Headphones', 'Speaker', 'Earphones'];
+
+	const category = categories.find((cat) => {
+		if (productName.includes(cat)) {
+			return cat;
+		}
+	}) as string;
+
+	const shortName = productName.replace(category, '');
+
+	return shortName;
+};
 
 const Product = ({ product }: { product: ProductData }) => {
 	// set the product amount
@@ -23,11 +38,11 @@ const Product = ({ product }: { product: ProductData }) => {
 	};
 
 	// push product to cart
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
-	const cartProduct = {
+	const cartProduct: ChosenProduct = {
 		id: product.id,
-		name: product.name,
+		name: removeCategory(product.name),
 		amount,
 		price: product.price * amount,
 		originalPrice: product.price,
@@ -42,6 +57,19 @@ const Product = ({ product }: { product: ProductData }) => {
 	const router = useRouter();
 	const isProductPage = /\/.*\//.test(router.asPath);
 	const productImage = isProductPage ? product.image : product.categoryImage;
+
+	// reset amount when changing to next page
+	useEffect(() => {
+		const handleRouteChange = () => {
+			setAmount(1);
+		};
+
+		router.events.on('routeChangeStart', handleRouteChange);
+
+		return () => {
+			router.events.off('routeChangeStart', handleRouteChange);
+		};
+	}, [router]);
 
 	return (
 		<div
@@ -96,10 +124,7 @@ const Product = ({ product }: { product: ProductData }) => {
 					</>
 				)}
 				{!isProductPage && (
-					<SeeProduct
-						url={`/${product.category}/${product.slug}`}
-						text={'see product'}
-					/>
+					<SeeProduct url={`/${product.category}/${product.slug}`} />
 				)}
 			</article>
 		</div>

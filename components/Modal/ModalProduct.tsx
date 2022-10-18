@@ -1,8 +1,10 @@
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../../store/hooks';
 import { incrementAmount, subtractAmount } from '../../store/cart';
 
-const ModalProduct = ({ product }) => {
-	const dispatch = useDispatch();
+import { ChosenProduct } from '../../models/chosenProduct';
+
+const ModalProduct = ({ product }: { product: ChosenProduct }) => {
+	const dispatch = useAppDispatch();
 
 	const handleIncrementAmount = () => {
 		dispatch(incrementAmount(product.id));
