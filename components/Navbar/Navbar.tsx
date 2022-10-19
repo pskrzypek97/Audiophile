@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+
+import OverlayContext from '../../store/ModalProvider';
 
 import Hamburger from './Hamburger';
 import Links from '../UI/Links';
 import Cart from '../Modal/Cart';
 
 const Navbar = () => {
-	const [isCart, setIsCart] = useState(false);
+	const { setOverlay, modal, setModal } = useContext(OverlayContext);
 
 	const handleCart = () => {
-		setIsCart((prevCart) => !prevCart);
+		setModal((prevModal) => !prevModal);
+		setOverlay((prevOverlay) => !prevOverlay);
 	};
 
 	return (
@@ -24,7 +27,7 @@ const Navbar = () => {
 				<use href="/sprite.svg#icon-cart"></use>
 			</svg>
 
-			{isCart && <Cart />}
+			{modal && <Cart />}
 		</nav>
 	);
 };

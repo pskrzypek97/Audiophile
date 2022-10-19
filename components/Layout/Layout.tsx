@@ -1,5 +1,7 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import { useRouter } from 'next/router';
+
+import OverlayContext from '../../store/ModalProvider';
 
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
@@ -9,6 +11,13 @@ interface Props {
 }
 
 const Layout = ({ children }: Props) => {
+	const { overlay, setOverlay, setModal } = useContext(OverlayContext);
+
+	const handleOverlay = () => {
+		setOverlay((prevOverlay) => !prevOverlay);
+		setModal(false);
+	};
+
 	const router = useRouter();
 
 	const mainStyle = /\/.*\//.test(router.asPath)
@@ -18,6 +27,7 @@ const Layout = ({ children }: Props) => {
 	return (
 		<div className="container">
 			<Navbar />
+			{overlay && <div className="overlay" onClick={handleOverlay}></div>}
 			<main className={mainStyle}>{children}</main>
 			<Footer />
 		</div>

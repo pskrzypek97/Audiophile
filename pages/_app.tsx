@@ -2,6 +2,7 @@ import { AppProps } from 'next/app';
 import '../styles/main.scss';
 import { store } from '../store/store';
 import { Provider } from 'react-redux';
+import { OverlayProvider } from '../store/ModalProvider';
 
 import Layout from '../components/Layout/Layout';
 
@@ -10,9 +11,11 @@ import Layout from '../components/Layout/Layout';
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<Provider store={store}>
-			<Layout>
-				<Component {...pageProps} />
-			</Layout>
+			<OverlayProvider>
+				<Layout>
+					<Component {...pageProps} />
+				</Layout>
+			</OverlayProvider>
 		</Provider>
 	);
 }
