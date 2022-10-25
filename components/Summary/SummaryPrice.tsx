@@ -1,4 +1,4 @@
-const SummaryPrice = ({ total }) => {
+const SummaryPrice = ({ total }: { total: number }) => {
 	const priceArr = [
 		{
 			title: 'total',
@@ -10,7 +10,10 @@ const SummaryPrice = ({ total }) => {
 		},
 		{
 			title: 'vat (included)',
-			price: `${total * 0.2}0`,
+			price: (total * 0.2).toLocaleString('pl', {
+				useGrouping: false,
+				minimumFractionDigits: 2,
+			}),
 		},
 		{
 			title: 'grand total',
