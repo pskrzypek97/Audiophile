@@ -1,12 +1,11 @@
 import Checkout from '../../components/Checkout/Checkout';
 import Summary from '../../components/Summary/Summary';
+import GoBackButton from '../../components/UI/GoBackButton';
 
 const CheckoutPage = () => {
 	return (
 		<>
-			<a href="#" className="btn btn--back">
-				Go Back
-			</a>
+			<GoBackButton />
 
 			<section className="checkout-main">
 				<Checkout />

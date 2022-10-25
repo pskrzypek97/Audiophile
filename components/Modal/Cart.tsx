@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 
 import { removeAll } from '../../store/cart';
@@ -5,7 +7,7 @@ import { removeAll } from '../../store/cart';
 import ModalProduct from './ModalProduct';
 
 const Cart = () => {
-	const { cart } = useAppSelector((state) => state.cart);
+	const { cart, id } = useAppSelector((state) => state.cart);
 
 	const dispatch = useAppDispatch();
 
@@ -36,7 +38,11 @@ const Cart = () => {
 					<h6 className="heading-6">$ {!cart.length ? 0 : total}</h6>
 				</div>
 			</div>
-			{cart.length >= 1 && <a className="btn btn--see-product">checkout</a>}
+			{cart.length >= 1 && (
+				<Link href={`/checkout/${id}`}>
+					<a className="btn btn--see-product">checkout</a>
+				</Link>
+			)}
 		</div>
 	);
 };

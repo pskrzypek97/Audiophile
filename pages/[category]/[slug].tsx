@@ -1,5 +1,4 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/router';
 
 import { data } from '../../data/shopData';
 import { ProductData } from '../../models/product';
@@ -10,6 +9,7 @@ import Product from '../../components/Product/Product';
 import YouMayLike from '../../components/YouMayLike/YouMayLike';
 import Gallery from '../../components/Gallery/Gallery';
 import Features from '../../components/Features/Features';
+import GoBackButton from '../../components/UI/GoBackButton';
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const paths = data.map((product) => {
@@ -40,13 +40,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const ProductPage = ({ product }: { product: ProductData }) => {
-	const router = useRouter();
-
 	return (
 		<>
-			<a className="btn btn--back" onClick={() => router.back()}>
-				Go Back
-			</a>
+			<GoBackButton />
 			<section className="product">
 				<Product product={product} />
 			</section>

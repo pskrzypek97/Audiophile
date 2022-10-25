@@ -17,7 +17,7 @@ const EMoney = () => {
 	return (
 		<>
 			{inputArr.map((input) => (
-				<div className="input__container">
+				<div key={input.id} className="input__container">
 					<label htmlFor={input.id}>{input.name}</label>
 					<input
 						type={input.type}

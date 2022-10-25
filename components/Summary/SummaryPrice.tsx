@@ -1,8 +1,8 @@
-const SummaryPrice = () => {
+const SummaryPrice = ({ total }) => {
 	const priceArr = [
 		{
 			title: 'total',
-			price: 5396,
+			price: total,
 		},
 		{
 			title: 'shipping',
@@ -10,18 +10,18 @@ const SummaryPrice = () => {
 		},
 		{
 			title: 'vat (included)',
-			price: 1079,
+			price: `${total * 0.2}0`,
 		},
 		{
 			title: 'grand total',
-			price: 5446,
+			price: total + 50,
 		},
 	];
 
 	return (
 		<div className="summary__price">
 			{priceArr.map(({ title, price }) => (
-				<div>
+				<div key={price}>
 					<p className="paragraph paragraph--summary">{title}</p>
 					<h6 className="heading-6">$ {price.toLocaleString()}</h6>
 				</div>

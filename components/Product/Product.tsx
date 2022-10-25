@@ -2,14 +2,16 @@ import { useState, useEffect } from 'react';
 
 import { useRouter } from 'next/router';
 
-import { useAppDispatch } from '../../store/hooks';
-import { addToCart } from '../../store/cart';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { addToCart, setId } from '../../store/cart';
 
 import { ProductData } from '../../models/product';
 import { ChosenProduct } from '../../models/chosenProduct';
 
 import SeeProduct from '../../components/UI/SeeProduct';
 // import QuantityButtons from '../../components/UI/QuantityButtons';
+
+import { v4 as uuidv4 } from 'uuid';
 
 const removeCategory = (productName: ChosenProduct['name']) => {
 	const categories = ['Headphones', 'Speaker', 'Earphones'];
@@ -37,6 +39,9 @@ const Product = ({ product }: { product: ProductData }) => {
 		if (amount > 1) setAmount((prevAmount) => (prevAmount -= 1));
 	};
 
+	// set cart id
+	const { id } = useAppSelector((state) => state.cart);
+
 	// push product to cart
 	const dispatch = useAppDispatch();
 
@@ -51,6 +56,7 @@ const Product = ({ product }: { product: ProductData }) => {
 
 	const handleAddToCart = () => {
 		dispatch(addToCart(cartProduct));
+		if (!id) dispatch(setId(uuidv4())); // if no id, set ID
 	};
 
 	// set the correct style depending on path

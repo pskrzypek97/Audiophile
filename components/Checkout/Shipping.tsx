@@ -31,7 +31,7 @@ const Shipping = () => {
 			<span className="span span--checkout">shipping</span>
 			<div className="checkout__container checkout__container--shipping">
 				{inputArr.map((input) => (
-					<div className="input__container">
+					<div key={input.id} className="input__container">
 						<label htmlFor={input.id}>{input.name}</label>
 						<input
 							type={input.type}

@@ -6,7 +6,7 @@ const Footer = () => {
 		<footer className="footer">
 			<div className="footer__top">
 				<svg className="logo">
-					<use href="sprite.svg#logo" />
+					<use href="/sprite.svg#logo" />
 				</svg>
 				<Links />
 			</div>

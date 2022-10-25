@@ -23,7 +23,7 @@ const Payment = () => {
 					<label className="checkout__label">Payment Method</label>
 					<div className="input__radio-container">
 						{radioArr.map((btn) => (
-							<div>
+							<div key={btn.id}>
 								<input
 									className="input input--radio"
 									type="radio"
