@@ -3,6 +3,8 @@ import { incrementAmount, subtractAmount } from '../../store/cart';
 
 import { ChosenProduct } from '../../models/chosenProduct';
 
+import QuantityButtons from '../UI/QuantityButtons';
+
 const ModalProduct = ({ product }: { product: ChosenProduct }) => {
 	const dispatch = useAppDispatch();
 
@@ -23,17 +25,14 @@ const ModalProduct = ({ product }: { product: ChosenProduct }) => {
 				<p className="paragraph paragraph--product">{product.name}</p>
 				<span className="span span--summary">$ {product.originalPrice}</span>
 			</div>
-			<div className="product__buttons">
-				<div className="product__quantity">
-					<button className="btn btn--amount" onClick={handleSubtractAmount}>
-						-
-					</button>
-					<span>{product.amount}</span>
-					<button className="btn btn--amount" onClick={handleIncrementAmount}>
-						+
-					</button>
-				</div>
-			</div>
+			<QuantityButtons
+				actions={{
+					isProductPage: false,
+					amount: product.amount,
+					increment: handleIncrementAmount,
+					subtract: handleSubtractAmount,
+				}}
+			/>
 		</div>
 	);
 };

@@ -9,7 +9,7 @@ import { ProductData } from '../../models/product';
 import { ChosenProduct } from '../../models/chosenProduct';
 
 import SeeProduct from '../../components/UI/SeeProduct';
-// import QuantityButtons from '../../components/UI/QuantityButtons';
+import QuantityButtons from '../../components/UI/QuantityButtons';
 
 const removeCategory = (productName: ChosenProduct['name']) => {
 	const categories = ['Headphones', 'Speaker', 'Earphones'];
@@ -89,29 +89,15 @@ const Product = ({ product }: { product: ProductData }) => {
 				{isProductPage && (
 					<>
 						<h6 className="heading-6">$ {product.price}</h6>
-						<div className="product__buttons">
-							<div className="product__quantity">
-								<button
-									className="btn btn--amount"
-									onClick={handleDecrementAmount}
-								>
-									-
-								</button>
-								<span>{amount}</span>
-								<button
-									className="btn btn--amount"
-									onClick={handleIncrementAmount}
-								>
-									+
-								</button>
-							</div>
-							<button
-								className="btn btn--see-product"
-								onClick={handleAddToCart}
-							>
-								add to cart
-							</button>
-						</div>
+						<QuantityButtons
+							actions={{
+								isProductPage: true,
+								increment: handleIncrementAmount,
+								subtract: handleDecrementAmount,
+								amount,
+								onAddToCart: handleAddToCart,
+							}}
+						/>
 					</>
 				)}
 				{!isProductPage && (
