@@ -78,18 +78,9 @@ const Product = ({ product }: { product: ProductData }) => {
 			}`}
 		>
 			<picture>
-				<source
-					srcSet={productImage.mobile.substring(1)}
-					media="(max-width: 600px)"
-				/>
-				<source
-					srcSet={productImage.tablet.substring(1)}
-					media="(max-width: 850px)"
-				/>
-				<img
-					src={productImage.desktop.substring(1)}
-					className="product__image"
-				/>
+				<source srcSet={productImage.mobile} media="(max-width: 600px)" />
+				<source srcSet={productImage.tablet} media="(max-width: 850px)" />
+				<img src={productImage.desktop} className="product__image" />
 			</picture>
 			<article className="product__detail">
 				{product.new && <span className="span span--new">new product</span>}

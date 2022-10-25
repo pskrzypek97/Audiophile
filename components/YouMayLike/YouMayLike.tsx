@@ -10,12 +10,9 @@ const YouMayLike = ({ others }: { others: ProductData['others'] }) => {
 				{others.map((other) => (
 					<div key={other.name} className="you-may-like__product">
 						<picture>
-							<source
-								srcSet={other.image.mobile.substring(1)}
-								media="(max-width: 600px)"
-							/>
+							<source srcSet={other.image.mobile} media="(max-width: 600px)" />
 							<img
-								src={other.image.desktop.substring(1)}
+								src={other.image.desktop}
 								alt=""
 								className="you-may-like__img"
 							/>
