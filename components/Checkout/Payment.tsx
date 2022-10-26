@@ -1,7 +1,15 @@
+import { useState } from 'react';
+
+import { useFormContext } from 'react-hook-form';
+
 import EMoney from './EMoney';
 import CashOnDelivery from './CashOnDelivery';
 
 const Payment = () => {
+	const [paymentOption, setPaymentOption] = useState('e-money');
+
+	const { register } = useFormContext();
+
 	const radioArr = [
 		{
 			id: 'e-money',
@@ -28,8 +36,10 @@ const Payment = () => {
 									className="input input--radio"
 									type="radio"
 									id={btn.id}
-									name="payment-method"
 									value={btn.id}
+									onClick={() => setPaymentOption(btn.id)}
+									defaultChecked={btn.checked}
+									{...register('payment-method')}
 								/>
 								<label htmlFor={btn.id}>{btn.name}</label>
 							</div>
@@ -37,8 +47,8 @@ const Payment = () => {
 					</div>
 				</div>
 				<div className="checkout__extra">
-					{/* <CashOnDelivery /> */}
-					<EMoney />
+					{paymentOption === 'cash' && <CashOnDelivery />}
+					{paymentOption === 'e-money' && <EMoney />}
 				</div>
 			</div>
 		</div>
