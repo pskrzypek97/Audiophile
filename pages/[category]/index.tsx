@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 import { GetStaticProps, GetStaticPaths } from 'next';
 
 import { data } from '../../data/shopData';
@@ -40,13 +42,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const CategoryPage = ({ products }: { products: ProductData[] }) => {
-	products.sort((a, b) => a.id + b.id);
+	const [productsArr, setProductsArr] = useState(products);
+
+	// sort array inside useEffect so it doesn't cause hydration bug
+	useEffect(() => {
+		const sortedProducts = [...products].sort((a, b) => a.id + b.id);
+		setProductsArr(sortedProducts);
+	}, [products]);
 
 	return (
 		<>
-			<Header category={products[0]?.category} />
+			<Header category={productsArr[0]?.category} />
 			<section className="product">
-				{products.map((product) => (
+				{productsArr.map((product) => (
 					<Product key={product.id} product={product} />
 				))}
 			</section>

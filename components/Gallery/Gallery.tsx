@@ -5,7 +5,7 @@ const Gallery = ({ gallery }: { gallery: ProductData['gallery'] }) => {
 		<section className="gallery">
 			{Object.values(gallery).map((img) => (
 				<picture key={img.desktop}>
-					<img src={img.desktop.substring(1)} className="gallery__img" />
+					<img src={img.desktop} className="gallery__img" />
 				</picture>
 			))}
 		</section>
