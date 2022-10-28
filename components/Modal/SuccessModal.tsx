@@ -1,11 +1,13 @@
 import { useState } from 'react';
 
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { removeAll, resetId } from '../../store/cart';
 
 import Link from 'next/link';
 
 const SuccessModal = () => {
 	const { cart } = useAppSelector((store) => store.cart);
+	const dispatch = useAppDispatch();
 
 	const [showMore, setShowMore] = useState(false);
 
@@ -15,6 +17,12 @@ const SuccessModal = () => {
 			: cart.reduce((prevPrice: number, { price }) => prevPrice + price, 0);
 
 	const slicedCart = cart.slice(1);
+
+	// reset cart
+	const handleResetCart = () => {
+		dispatch(removeAll());
+		dispatch(resetId());
+	};
 
 	return (
 		<div className="modal modal--checkout">
@@ -29,19 +37,22 @@ const SuccessModal = () => {
 			</p>
 			<div className="confirmation">
 				<div className="confirmation__products">
-					<div className="modal__product">
-						<picture>
-							<img className="modal__img" src={cart[0].cartImage} />
-						</picture>
-						<div>
-							<p className="paragraph paragraph--product">{cart[0].name}</p>
-							<span className="span span--summary">
-								$ {cart[0].originalPrice}
-							</span>
+					{cart.length !== 0 && (
+						<div className="modal__product">
+							<picture>
+								<img className="modal__img" src={cart[0].cartImage} />
+							</picture>
+							<div>
+								<p className="paragraph paragraph--product">{cart[0].name}</p>
+								<span className="span span--summary">
+									$ {cart[0].originalPrice}
+								</span>
+							</div>
+							<p className="paragraph">x{cart[0].amount}</p>
 						</div>
-						<p className="paragraph">x{cart[0].amount}</p>
-					</div>
-					{showMore &&
+					)}
+					{cart.length !== 0 &&
+						showMore &&
 						slicedCart.map((product) => (
 							<div key={product.id} className="modal__product">
 								<picture>
@@ -75,7 +86,9 @@ const SuccessModal = () => {
 				</div>
 			</div>
 			<Link href="/">
-				<a className="btn btn--see-product">back to home</a>
+				<a className="btn btn--see-product" onClick={handleResetCart}>
+					back to home
+				</a>
 			</Link>
 		</div>
 	);

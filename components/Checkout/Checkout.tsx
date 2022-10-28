@@ -1,12 +1,24 @@
+import { useEffect, Dispatch, SetStateAction } from 'react';
+
 import { useForm, FormProvider } from 'react-hook-form';
+
+import { CheckoutForm } from '../../models/checkoutForm';
 
 import Billing from './Billing';
 import Shipping from './Shipping';
 import Payment from './Payment';
 
-const Checkout = () => {
+interface OnValidProp {
+	onValid: Dispatch<SetStateAction<boolean>>;
+}
+
+const Checkout = ({ onValid }: OnValidProp) => {
 	const methods = useForm();
-	const onSubmit = (data) => console.log(data);
+	const onSubmit = (data: CheckoutForm) => console.log(data);
+
+	const { isValid } = methods.formState;
+
+	useEffect(() => onValid(isValid), [isValid]);
 
 	return (
 		<FormProvider {...methods}>

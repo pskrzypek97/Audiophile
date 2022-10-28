@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 
-const EMoney = () => {
+const EMoney = ({ isEmoney }: { isEmoney: boolean }) => {
 	const {
 		register,
 		formState: { errors },
@@ -12,7 +12,7 @@ const EMoney = () => {
 			name: 'e-Money Number',
 			placeholder: '238521993',
 			required: {
-				value: true,
+				value: isEmoney,
 				message: 'This field is required',
 			},
 			minLength: {
@@ -33,7 +33,7 @@ const EMoney = () => {
 			name: 'e-Money PIN',
 			placeholder: '6891',
 			required: {
-				value: true,
+				value: isEmoney,
 				message: 'This field is required',
 			},
 			minLength: {
@@ -61,6 +61,7 @@ const EMoney = () => {
 						id={input.id}
 						placeholder={input.placeholder}
 						className="input input--text"
+						defaultValue=""
 						{...register(input.id, {
 							required: input.required,
 							minLength: input.minLength,

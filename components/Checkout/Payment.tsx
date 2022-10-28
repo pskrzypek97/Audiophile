@@ -6,22 +6,30 @@ import EMoney from './EMoney';
 import CashOnDelivery from './CashOnDelivery';
 
 const Payment = () => {
-	const [paymentOption, setPaymentOption] = useState('e-money');
+	const [isEmoney, setIsEmoney] = useState(true);
 
-	const { register } = useFormContext();
+	const { register, unregister } = useFormContext();
 
 	const radioArr = [
 		{
 			id: 'e-money',
 			name: 'e-Money',
 			checked: true,
+			isEmoney: true,
 		},
 		{
 			id: 'cash',
 			name: 'Cash on Delivery',
 			checked: false,
+			isEmoney: false,
 		},
 	];
+
+	const unregisterInputs = (state: boolean) => {
+		unregister('e-money pin');
+		unregister('e-money number');
+		setIsEmoney(state);
+	};
 
 	return (
 		<div className="checkout__payment">
@@ -37,7 +45,7 @@ const Payment = () => {
 									type="radio"
 									id={btn.id}
 									value={btn.id}
-									onClick={() => setPaymentOption(btn.id)}
+									onClick={() => unregisterInputs(btn.isEmoney)}
 									defaultChecked={btn.checked}
 									{...register('payment-method')}
 								/>
@@ -47,8 +55,8 @@ const Payment = () => {
 					</div>
 				</div>
 				<div className="checkout__extra">
-					{paymentOption === 'cash' && <CashOnDelivery />}
-					{paymentOption === 'e-money' && <EMoney />}
+					{!isEmoney && <CashOnDelivery />}
+					{isEmoney && <EMoney isEmoney={isEmoney} />}
 				</div>
 			</div>
 		</div>

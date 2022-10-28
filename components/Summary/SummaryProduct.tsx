@@ -1,4 +1,6 @@
-const SummaryProduct = ({ product }) => {
+import { ChosenProduct } from '../../models/chosenProduct';
+
+const SummaryProduct = ({ product }: { product: ChosenProduct }) => {
 	return (
 		<div className="summary__product">
 			<picture>

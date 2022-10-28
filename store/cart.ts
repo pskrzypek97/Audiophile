@@ -52,10 +52,19 @@ export const cartSlice = createSlice({
 		setId: (state, action) => {
 			state.id = action.payload;
 		},
+		resetId: (state) => {
+			state.id = 0;
+		},
 	},
 });
 
-export const { addToCart, removeAll, incrementAmount, subtractAmount, setId } =
-	cartSlice.actions;
+export const {
+	addToCart,
+	removeAll,
+	incrementAmount,
+	subtractAmount,
+	setId,
+	resetId,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
