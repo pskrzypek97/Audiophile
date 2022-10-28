@@ -4,10 +4,12 @@ import { ChosenProduct } from '../models/chosenProduct';
 
 interface CartState {
 	cart: ChosenProduct[];
+	id: number;
 }
 
 const initialState: CartState = {
 	cart: [],
+	id: 0,
 };
 
 export const cartSlice = createSlice({
@@ -47,10 +49,22 @@ export const cartSlice = createSlice({
 		removeAll: (state) => {
 			state.cart = [];
 		},
+		setId: (state, action) => {
+			state.id = action.payload;
+		},
+		resetId: (state) => {
+			state.id = 0;
+		},
 	},
 });
 
-export const { addToCart, removeAll, incrementAmount, subtractAmount } =
-	cartSlice.actions;
+export const {
+	addToCart,
+	removeAll,
+	incrementAmount,
+	subtractAmount,
+	setId,
+	resetId,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
