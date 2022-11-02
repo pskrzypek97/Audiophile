@@ -5,7 +5,13 @@ import { ChosenProduct } from '../../models/chosenProduct';
 
 import QuantityButtons from '../UI/QuantityButtons';
 
-const ModalProduct = ({ product }: { product: ChosenProduct }) => {
+interface SmallProduct {
+	type: 'modal' | 'summary';
+	product: ChosenProduct;
+	child: 'QuantityButtons' | 'AmountParagraph';
+}
+
+const SmallProduct = ({ type, product, child }: SmallProduct) => {
 	const dispatch = useAppDispatch();
 
 	const handleIncrementAmount = () => {
@@ -17,24 +23,29 @@ const ModalProduct = ({ product }: { product: ChosenProduct }) => {
 	};
 
 	return (
-		<div className="modal__product">
+		<div className={`${type}__product`}>
 			<picture>
-				<img src={product.cartImage} className="modal__img" />
+				<img className={`${type}__img`} src={product.cartImage} />
 			</picture>
 			<div>
 				<p className="paragraph paragraph--product">{product.name}</p>
 				<span className="span span--summary">$ {product.originalPrice}</span>
 			</div>
-			<QuantityButtons
-				actions={{
-					isProductPage: false,
-					amount: product.amount,
-					increment: handleIncrementAmount,
-					subtract: handleSubtractAmount,
-				}}
-			/>
+			{child === 'QuantityButtons' && (
+				<QuantityButtons
+					actions={{
+						isProductPage: false,
+						amount: product.amount,
+						increment: handleIncrementAmount,
+						subtract: handleSubtractAmount,
+					}}
+				/>
+			)}
+			{child === 'AmountParagraph' && (
+				<p className="paragraph">x{product.amount}</p>
+			)}
 		</div>
 	);
 };
 
-export default ModalProduct;
+export default SmallProduct;

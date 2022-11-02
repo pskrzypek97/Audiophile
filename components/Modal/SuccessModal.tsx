@@ -5,16 +5,13 @@ import { removeAll, resetId } from '../../store/cart';
 
 import Link from 'next/link';
 
+import SmallProduct from '../SmallProduct/SmallProduct';
+
 const SuccessModal = () => {
-	const { cart } = useAppSelector((store) => store.cart);
+	const { cart, total } = useAppSelector((store) => store.cart);
 	const dispatch = useAppDispatch();
 
 	const [showMore, setShowMore] = useState(false);
-
-	const total =
-		cart.length === 1
-			? cart[0].price
-			: cart.reduce((prevPrice: number, { price }) => prevPrice + price, 0);
 
 	const slicedCart = cart.slice(1);
 
@@ -38,34 +35,21 @@ const SuccessModal = () => {
 			<div className="confirmation">
 				<div className="confirmation__products">
 					{cart.length !== 0 && (
-						<div className="modal__product">
-							<picture>
-								<img className="modal__img" src={cart[0].cartImage} />
-							</picture>
-							<div>
-								<p className="paragraph paragraph--product">{cart[0].name}</p>
-								<span className="span span--summary">
-									$ {cart[0].originalPrice}
-								</span>
-							</div>
-							<p className="paragraph">x{cart[0].amount}</p>
-						</div>
+						<SmallProduct
+							type={'modal'}
+							product={cart[0]}
+							child={'AmountParagraph'}
+						/>
 					)}
 					{cart.length !== 0 &&
 						showMore &&
 						slicedCart.map((product) => (
-							<div key={product.id} className="modal__product">
-								<picture>
-									<img className="modal__img" src={product.cartImage} />
-								</picture>
-								<div>
-									<p className="paragraph paragraph--product">{product.name}</p>
-									<span className="span span--summary">
-										$ {product.originalPrice}
-									</span>
-								</div>
-								<p className="paragraph">x{product.amount}</p>
-							</div>
+							<SmallProduct
+								key={product.id}
+								type={'modal'}
+								product={product}
+								child={'AmountParagraph'}
+							/>
 						))}
 					{cart.length > 1 && (
 						<div className="confirmation__more">

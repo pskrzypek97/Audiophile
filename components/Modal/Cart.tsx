@@ -4,17 +4,12 @@ import { useAppSelector, useAppDispatch } from '../../store/hooks';
 
 import { removeAll } from '../../store/cart';
 
-import ModalProduct from './ModalProduct';
+import SmallProduct from '../SmallProduct/SmallProduct';
 
 const Cart = () => {
-	const { cart, id } = useAppSelector((state) => state.cart);
+	const { cart, id, total } = useAppSelector((state) => state.cart);
 
 	const dispatch = useAppDispatch();
-
-	const total =
-		cart.length === 1
-			? cart[0].price
-			: cart.reduce((prevPrice: number, { price }) => prevPrice + price, 0);
 
 	return (
 		<div className="modal modal--cart">
@@ -30,12 +25,17 @@ const Cart = () => {
 			{cart.length < 1 && <p className="paragraph">Cart is empty</p>}
 			{cart.length >= 1 &&
 				cart.map((product) => (
-					<ModalProduct key={product.id} product={product} />
+					<SmallProduct
+						key={product.id}
+						type={'modal'}
+						product={product}
+						child={'QuantityButtons'}
+					/>
 				))}
 			<div className="summary__price">
 				<div>
 					<p className="paragraph paragraph--summary">total</p>
-					<h6 className="heading-6">$ {!cart.length ? 0 : total}</h6>
+					<h6 className="heading-6">$ {total}</h6>
 				</div>
 			</div>
 			{cart.length >= 1 && (
