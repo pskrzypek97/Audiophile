@@ -6,20 +6,17 @@ import GoBackButton from '../../components/UI/GoBackButton';
 import SuccessModal from '../../components/Modal/SuccessModal';
 
 const CheckoutPage = () => {
-	const [isSuccess, setIsSuccess] = useState(false);
-	const [valid, setValid] = useState(null);
-
-	console.log(valid);
+	const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
 
 	return (
 		<>
 			<GoBackButton />
 
 			<section className="checkout-main">
-				<Checkout onValid={setValid} />
-				<Summary actions={{ setIsSuccess, valid }} />
+				<Checkout onSuccess={setIsSubmitSuccessful} />
+				<Summary />
 			</section>
-			{isSuccess && <SuccessModal />}
+			{isSubmitSuccessful && <SuccessModal />}
 		</>
 	);
 };

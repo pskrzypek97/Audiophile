@@ -1,4 +1,4 @@
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, FieldError } from 'react-hook-form';
 
 const Billing = () => {
 	const {
@@ -72,7 +72,7 @@ const Billing = () => {
 							})}
 						/>
 						{errors[`${input.id}`] && (
-							<span>{errors[`${input.id}`]?.message}</span>
+							<span>{errors[`${input.id}`]?.message as FieldError | any}</span>
 						)}
 					</div>
 				))}

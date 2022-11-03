@@ -1,4 +1,4 @@
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, FieldError } from 'react-hook-form';
 
 const EMoney = ({ isEmoney }: { isEmoney: boolean }) => {
 	const {
@@ -70,7 +70,7 @@ const EMoney = ({ isEmoney }: { isEmoney: boolean }) => {
 						})}
 					/>
 					{errors[`${input.id}`] && (
-						<span>{errors[`${input.id}`]?.message}</span>
+						<span>{errors[`${input.id}`]?.message as FieldError | any}</span>
 					)}
 				</div>
 			))}

@@ -1,25 +1,10 @@
-import { Dispatch, SetStateAction } from 'react';
-
 import { useAppSelector } from '../../store/hooks';
 
 import SmallProduct from '../SmallProduct/SmallProduct';
 import SummaryPrice from './SummaryPrice';
 
-interface ActionsProps {
-	actions: {
-		valid: boolean | null;
-		setIsSuccess: Dispatch<SetStateAction<boolean>>;
-	};
-}
-
-const Summary = ({ actions }: ActionsProps) => {
+const Summary = () => {
 	const { cart, total } = useAppSelector((store) => store.cart);
-
-	const handleSuccess = () => {
-		if (actions.valid) {
-			actions.setIsSuccess(true);
-		}
-	};
 
 	return (
 		<section className="summary">
@@ -36,11 +21,7 @@ const Summary = ({ actions }: ActionsProps) => {
 			</div>
 			<SummaryPrice total={total} />
 
-			<button
-				form="checkout"
-				className="btn btn--see-product"
-				onClick={handleSuccess}
-			>
+			<button form="checkout" className="btn btn--see-product">
 				continue & pay
 			</button>
 		</section>

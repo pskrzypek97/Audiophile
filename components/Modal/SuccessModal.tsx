@@ -17,8 +17,10 @@ const SuccessModal = () => {
 
 	// reset cart
 	const handleResetCart = () => {
-		dispatch(removeAll());
-		dispatch(resetId());
+		setTimeout(() => {
+			dispatch(removeAll());
+			dispatch(resetId());
+		}, 100);
 	};
 
 	return (
