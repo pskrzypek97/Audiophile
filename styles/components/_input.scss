@@ -25,14 +25,32 @@
 		display: flex;
 		justify-content: center;
 
-		cursor: pointer;
+		& + label {
+			position: absolute;
+			right: 0;
+			margin: 0;
+			height: 4.8rem;
+			width: 100%;
+			border: 1px solid darken($color-white, 20%);
+			border-radius: 0.7rem;
+
+			display: flex;
+			align-items: center;
+
+			cursor: pointer;
+
+			& > span {
+				margin-left: 6rem;
+				margin-bottom: 0;
+			}
+		}
 
 		&:checked {
 			&::before {
 				background-color: $color-beige-dark;
 			}
 
-			&::after {
+			& + label {
 				border-color: $color-beige-dark;
 			}
 		}
@@ -45,37 +63,6 @@
 			width: 1rem;
 			border-radius: inherit;
 			align-self: center;
-		}
-
-		// border around radio button
-		&::after {
-			content: '';
-			position: absolute;
-			height: 5rem;
-			width: 23vw;
-			transform: translate(43%, -35%);
-			border: 1px solid darken($color-white, 20%);
-			border-radius: 0.7rem;
-
-			@media only screen and (max-width: $bp-large) {
-				@include radio-btn-after(20vw, 38%);
-			}
-
-			@media only screen and (max-width: $bp-big) {
-				@include radio-btn-after(25vw, 38%);
-			}
-
-			@media only screen and (max-width: $bp-medium) {
-				@include radio-btn-after(40vw, 38%);
-			}
-
-			@media only screen and (max-width: $bp-small) {
-				@include radio-btn-after(78vw, 44%);
-			}
-
-			@media only screen and (max-width: $bp-tiny) {
-				@include radio-btn-after(72vw, 41.5%);
-			}
 		}
 
 		@media only screen and (max-width: $bp-small) {
@@ -112,16 +99,6 @@
 
 			margin-bottom: 0.5rem;
 		}
-
-		& span {
-			position: absolute;
-			right: 0;
-			top: 0.5rem;
-
-			font-size: 1.2rem;
-			font-weight: $font-weight-medium;
-			color: $color-error;
-		}
 	}
 
 	// container containing both radio buttons
@@ -131,6 +108,7 @@
 		width: 50%;
 
 		& > div {
+			position: relative;
 			display: flex;
 			align-items: center;
 		}
@@ -149,5 +127,15 @@
 			margin-left: 0;
 			width: 100%;
 		}
+	}
+
+	&__error {
+		position: absolute;
+		right: 0;
+		top: 0.5rem;
+
+		font-size: 1.2rem;
+		font-weight: $font-weight-medium;
+		color: $color-error;
 	}
 }

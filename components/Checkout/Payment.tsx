@@ -49,7 +49,9 @@ const Payment = () => {
 									defaultChecked={btn.checked}
 									{...register('payment-method')}
 								/>
-								<label htmlFor={btn.id}>{btn.name}</label>
+								<label htmlFor={btn.id}>
+									<span>{btn.name}</span>
+								</label>
 							</div>
 						))}
 					</div>

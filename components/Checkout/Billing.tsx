@@ -72,7 +72,9 @@ const Billing = () => {
 							})}
 						/>
 						{errors[`${input.id}`] && (
-							<span>{errors[`${input.id}`]?.message as FieldError | any}</span>
+							<span className="input__error">
+								{errors[`${input.id}`]?.message as FieldError | any}
+							</span>
 						)}
 					</div>
 				))}
