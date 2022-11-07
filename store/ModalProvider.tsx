@@ -50,7 +50,6 @@ export const ModalProvider = ({ children }: Props) => {
 	};
 
 	const handleCart = () => {
-		console.log(router);
 		if (router.asPath.includes('checkout')) setCart(false);
 		else {
 			setCart((prevCart) => !prevCart);
