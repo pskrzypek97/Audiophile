@@ -1,7 +1,7 @@
 import React, { ReactNode, useContext } from 'react';
 import { useRouter } from 'next/router';
 
-import OverlayContext from '../../store/ModalProvider';
+import ModalContext from '../../store/ModalProvider';
 
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
@@ -11,12 +11,7 @@ interface Props {
 }
 
 const Layout = ({ children }: Props) => {
-	const { overlay, setOverlay, setModal } = useContext(OverlayContext);
-
-	const handleOverlay = () => {
-		setOverlay((prevOverlay) => !prevOverlay);
-		setModal(false);
-	};
+	const { overlay, handleOverlay } = useContext(ModalContext);
 
 	const router = useRouter();
 

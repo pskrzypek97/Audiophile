@@ -1,4 +1,6 @@
-import { Dispatch, SetStateAction } from 'react';
+import { useContext, Dispatch, SetStateAction } from 'react';
+
+import ModalContext from '../../store/ModalProvider';
 
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 
@@ -22,10 +24,13 @@ const postFormData = (data: CheckoutForm): Promise<{ success: boolean }> => {
 };
 
 const Checkout = ({ onSuccess }: OnSuccessProp) => {
+	const { handleSuccessModal } = useContext(ModalContext);
+
 	const methods = useForm<CheckoutForm>();
 	const onSubmit: SubmitHandler<CheckoutForm> = async (data) => {
 		const result = await postFormData(data);
 		onSuccess(result.success);
+		handleSuccessModal();
 	};
 
 	return (

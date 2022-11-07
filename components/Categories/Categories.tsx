@@ -1,10 +1,14 @@
 import Link from 'next/link';
 
-const Categories = () => {
+const Categories = ({ onHamburger }: { onHamburger: boolean }) => {
 	const categories = ['headphones', 'speakers', 'earphones'];
 
 	return (
-		<section className="categories">
+		<section
+			className={`categories ${
+				onHamburger ? 'categories--hamburger-menu' : ''
+			}`}
+		>
 			{categories.map((category) => (
 				<Link key={category} href={`/${category}`}>
 					<a className="btn btn--shop" href="#">

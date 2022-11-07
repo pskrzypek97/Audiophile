@@ -49,7 +49,7 @@ const ProductPage = ({ product }: { product: ProductData }) => {
 			<Features features={product.features} includes={product.includes} />
 			<Gallery gallery={product.gallery} />
 			<YouMayLike others={product.others} />
-			<Categories />
+			<Categories onHamburger={false} />
 			<Story />
 		</>
 	);

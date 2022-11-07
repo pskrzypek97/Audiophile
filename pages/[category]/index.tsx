@@ -58,7 +58,7 @@ const CategoryPage = ({ products }: { products: ProductData[] }) => {
 					<Product key={product.id} product={product} />
 				))}
 			</section>
-			<Categories />
+			<Categories onHamburger={false} />
 			<Story />
 		</>
 	);

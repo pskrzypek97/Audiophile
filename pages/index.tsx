@@ -9,7 +9,7 @@ export default function Home() {
 	return (
 		<>
 			<Header category={false} />
-			<Categories />
+			<Categories onHamburger={false} />
 			<Recommend />
 			<Story />
 		</>

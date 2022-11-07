@@ -1,18 +1,14 @@
 import { useContext } from 'react';
 
-import OverlayContext from '../../store/ModalProvider';
+import ModalContext from '../../store/ModalProvider';
 
 import Hamburger from './Hamburger';
 import Links from '../UI/Links';
 import Cart from '../Modal/Cart';
+import HamburgerMenu from './HamburgerMenu';
 
 const Navbar = () => {
-	const { setOverlay, modal, setModal } = useContext(OverlayContext);
-
-	const handleCart = () => {
-		setModal((prevModal) => !prevModal);
-		setOverlay((prevOverlay) => !prevOverlay);
-	};
+	const { cart, handleCart, hamburgerMenu } = useContext(ModalContext);
 
 	return (
 		<nav className="navigation">
@@ -27,7 +23,8 @@ const Navbar = () => {
 				<use href="/sprite.svg#icon-cart"></use>
 			</svg>
 
-			{modal && <Cart />}
+			{cart && <Cart />}
+			{hamburgerMenu && <HamburgerMenu />}
 		</nav>
 	);
 };

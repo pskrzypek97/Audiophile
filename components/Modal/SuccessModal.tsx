@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { removeAll, resetId } from '../../store/cart';
+import ModalContext from '../../store/ModalProvider';
 
 import Link from 'next/link';
 
@@ -12,6 +13,7 @@ const SuccessModal = () => {
 	const dispatch = useAppDispatch();
 
 	const [showMore, setShowMore] = useState(false);
+	const { handleSuccessModalOff } = useContext(ModalContext);
 
 	const slicedCart = cart.slice(1);
 
@@ -20,6 +22,7 @@ const SuccessModal = () => {
 		setTimeout(() => {
 			dispatch(removeAll());
 			dispatch(resetId());
+			handleSuccessModalOff();
 		}, 100);
 	};
 
