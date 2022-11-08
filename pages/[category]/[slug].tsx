@@ -10,6 +10,7 @@ import YouMayLike from '../../components/YouMayLike/YouMayLike';
 import Gallery from '../../components/Gallery/Gallery';
 import Features from '../../components/Features/Features';
 import GoBackButton from '../../components/UI/GoBackButton';
+import HeadComp from '../../components/Head/HeadComp';
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const paths = data.map((product) => {
@@ -42,6 +43,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 const ProductPage = ({ product }: { product: ProductData }) => {
 	return (
 		<>
+			<HeadComp subtitle={product.name} />
 			<GoBackButton />
 			<section className="product">
 				<Product product={product} />
