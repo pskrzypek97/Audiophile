@@ -1,30 +1,50 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect, SetStateAction } from 'react';
 
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { removeAll, resetId } from '../../store/cart';
 import ModalContext from '../../store/ModalProvider';
 
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import SmallProduct from '../SmallProduct/SmallProduct';
+import { ChosenProduct } from '../../models/chosenProduct';
 
 const SuccessModal = () => {
+	// access cart and total
 	const { cart, total } = useAppSelector((store) => store.cart);
 	const dispatch = useAppDispatch();
 
+	// manage the showMore button
 	const [showMore, setShowMore] = useState(false);
-	const { handleSuccessModalOff } = useContext(ModalContext);
 
-	const slicedCart = cart.slice(1);
+	// access handleSuccessModalOff and successModal state
+	const { handleSuccessModalOff, successModal } = useContext(ModalContext);
+	const router = useRouter();
 
-	// reset cart
-	const handleResetCart = () => {
-		setTimeout(() => {
-			dispatch(removeAll());
-			dispatch(resetId());
-			handleSuccessModalOff();
-		}, 100);
-	};
+	// create slicedCart array
+	const [slicedCart, setSlicedCart] = useState<
+		SetStateAction<ChosenProduct[] | any>
+	>([]);
+	useEffect(() => setSlicedCart(cart.slice(1)), []);
+
+	// reset cart and turn modal off
+	// when leaving page while successModal is true
+	useEffect(() => {
+		const handleRouteChange = () => {
+			if (successModal) {
+				dispatch(removeAll());
+				dispatch(resetId());
+				handleSuccessModalOff();
+			}
+		};
+
+		router.events.on('routeChangeStart', handleRouteChange);
+
+		return () => {
+			router.events.off('routeChangeStart', handleRouteChange);
+		};
+	}, []);
 
 	return (
 		<div className="modal modal--checkout">
@@ -48,7 +68,7 @@ const SuccessModal = () => {
 					)}
 					{cart.length !== 0 &&
 						showMore &&
-						slicedCart.map((product) => (
+						slicedCart.map((product: ChosenProduct) => (
 							<SmallProduct
 								key={product.id}
 								type={'modal'}
@@ -75,9 +95,7 @@ const SuccessModal = () => {
 				</div>
 			</div>
 			<Link href="/">
-				<a className="btn btn--see-product" onClick={handleResetCart}>
-					back to home
-				</a>
+				<a className="btn btn--see-product">back to home</a>
 			</Link>
 		</div>
 	);

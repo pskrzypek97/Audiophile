@@ -10,6 +10,7 @@ interface ModalContextInterface {
 	overlay: boolean;
 	cart: boolean;
 	hamburgerMenu: boolean;
+	successModal: boolean;
 	handleOverlay: () => void;
 	handleCart: () => void;
 	handleSuccessModal: () => void;
@@ -21,6 +22,7 @@ const ModalContext = createContext<ModalContextInterface>({
 	overlay: false,
 	cart: false,
 	hamburgerMenu: false,
+	successModal: false,
 	handleOverlay() {},
 	handleCart() {},
 	handleSuccessModal() {},
@@ -91,6 +93,7 @@ export const ModalProvider = ({ children }: Props) => {
 				overlay,
 				cart,
 				hamburgerMenu,
+				successModal,
 				handleOverlay,
 				handleCart,
 				handleSuccessModal,

@@ -1,16 +1,21 @@
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-const activeLink = (dir: string, link: string) => {
+const activeLink = (dir: string | undefined, link: string) => {
 	const active = dir === link ? 'link link-active' : 'link';
 	return active;
 };
 
 const Links = () => {
-	const links = ['', 'headphones', 'speakers', 'earphones'];
+	const [curDir, setCurDir] = useState<string | undefined>();
 
+	const links = ['', 'headphones', 'speakers', 'earphones'];
 	const router = useRouter();
-	const curDir = router.asPath.split('/')[1];
+
+	useEffect(() => {
+		setCurDir(router.asPath.split('/')[1]);
+	}, [router.asPath]);
 
 	return (
 		<ul className="links">
