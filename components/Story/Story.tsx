@@ -1,4 +1,12 @@
+import { useImage } from '../../hooks/useImage';
+
 const Story = () => {
+	const image = useImage({
+		mobile: '/assets/shared/mobile/image-best-gear.jpg',
+		tablet: '/assets/shared/tablet/image-best-gear.jpg',
+		desktop: '/assets/shared/desktop/image-best-gear.jpg',
+	});
+
 	return (
 		<section className="story">
 			<div className="story__left">
@@ -16,18 +24,15 @@ const Story = () => {
 			</div>
 
 			<picture>
-				<source
+				{/* <source
 					srcSet="/assets/shared/mobile/image-best-gear.jpg"
 					media="(max-width: 600px)"
 				/>
 				<source
 					srcSet="/assets/shared/tablet/image-best-gear.jpg"
 					media="(max-width: 850px)"
-				/>
-				<img
-					src="/assets/shared/desktop/image-best-gear.jpg"
-					alt="Man listening to music"
-				/>
+				/> */}
+				<img src={image} alt="Man listening to music" />
 			</picture>
 		</section>
 	);

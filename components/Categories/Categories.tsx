@@ -10,7 +10,7 @@ const Categories = ({ onHamburger }: { onHamburger: boolean }) => {
 			}`}
 		>
 			{categories.map((category) => (
-				<Link key={category} href={`/${category}`}>
+				<Link key={category} href={`/${category}`} legacyBehavior>
 					<a className="btn btn--shop" href="#">
 						<h6 className="heading-6">{category}</h6>
 						<div className="categories__shop">

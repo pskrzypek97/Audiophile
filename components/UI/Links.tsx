@@ -20,10 +20,8 @@ const Links = () => {
 	return (
 		<ul className="links">
 			{links.map((link) => (
-				<Link key={link} href={`/${link}`}>
-					<a className={activeLink(curDir, link)}>
-						{link === '' ? 'home' : link}
-					</a>
+				<Link key={link} href={`/${link}`} className={activeLink(curDir, link)}>
+					{link === '' ? 'home' : link}
 				</Link>
 			))}
 		</ul>

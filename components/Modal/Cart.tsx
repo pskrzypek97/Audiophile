@@ -39,8 +39,8 @@ const Cart = () => {
 				</div>
 			</div>
 			{cart.length >= 1 && (
-				<Link href={`/checkout/${id}`}>
-					<a className="btn btn--see-product">checkout</a>
+				<Link href={`/checkout/${id}`} className="btn btn--see-product">
+					checkout
 				</Link>
 			)}
 		</div>

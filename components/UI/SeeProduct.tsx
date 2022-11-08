@@ -6,8 +6,8 @@ interface Url {
 
 const SeeProduct = ({ url }: Url) => {
 	return (
-		<Link href={url}>
-			<a className="btn btn--see-product">see product</a>
+		<Link href={url} className="btn btn--see-product">
+			see product
 		</Link>
 	);
 };
