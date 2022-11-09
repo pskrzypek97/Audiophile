@@ -1,0 +1,23 @@
+.goback {
+	align-self: center;
+	margin-inline: 10%;
+	margin-top: 5rem;
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	& > * {
+		margin-bottom: 1rem;
+	}
+
+	& h1 {
+		color: #101010;
+	}
+
+	& h2 {
+		margin-bottom: 4rem;
+	}
+}

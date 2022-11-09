@@ -10,12 +10,23 @@ interface Props {
 	children?: ReactNode;
 }
 
+const productArr = [
+	'xx99-mark-two-headphones',
+	'xx99-mark-one-headphones',
+	'xx59-headphones',
+	'zx9-speaker',
+	'zx7-speaker',
+	'yx1-earphones',
+];
+
 const Layout = ({ children }: Props) => {
 	const { overlay, handleOverlay } = useContext(ModalContext);
 
 	const router = useRouter();
 
-	const mainStyle = /\/.*\//.test(router.asPath)
+	const mainStyle = productArr.some((product) =>
+		router.asPath.includes(product)
+	)
 		? 'main main--product'
 		: 'main';
 

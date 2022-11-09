@@ -80,11 +80,11 @@ const Product = ({ product }: { product: ProductData }) => {
 	}, [router]);
 
 	// set correct image based on screen width
-	const image = useImage({
-		mobile: productImage.mobile,
-		tablet: productImage.tablet,
-		desktop: productImage.desktop,
-	});
+	// const image = useImage({
+	// 	mobile: productImage.mobile,
+	// 	tablet: productImage.tablet,
+	// 	desktop: productImage.d
+	// })
 
 	return (
 		<div
@@ -93,9 +93,9 @@ const Product = ({ product }: { product: ProductData }) => {
 			}`}
 		>
 			<picture>
-				{/* <source srcSet={productImage.mobile} media="(max-width: 600px)" />
-				<source srcSet={productImage.tablet} media="(max-width: 850px)" /> */}
-				<img src={image} className="product__image" />
+				<source srcSet={productImage.mobile} media="(max-width: 600px)" />
+				<source srcSet={productImage.tablet} media="(max-width: 850px)" />
+				<img src={productImage.desktop} className="product__image" />
 			</picture>
 			<article className="product__detail">
 				{product.new && <span className="span span--new">new product</span>}
