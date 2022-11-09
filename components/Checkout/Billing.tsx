@@ -1,4 +1,10 @@
+import { useState, useEffect } from 'react';
+
 import { useFormContext, FieldError } from 'react-hook-form';
+
+import { inputData } from '../../data/inputData';
+
+import { InputsInt } from '../../models/inputs';
 
 const Billing = () => {
 	const {
@@ -6,51 +12,11 @@ const Billing = () => {
 		formState: { errors },
 	} = useFormContext();
 
-	const inputArr = [
-		{
-			id: 'name',
-			name: 'Name',
-			placeholder: 'Alexei Ward',
-			required: {
-				value: true,
-				message: 'This field is required',
-			},
-			minLength: {
-				value: 2,
-				message: 'The name must be at least 2 characters long.',
-			},
-		},
-		{
-			id: 'email',
-			name: 'Email Address',
-			placeholder: 'alexei@mail.com',
-			required: {
-				value: true,
-				message: 'This field is required',
-			},
-			pattern: {
-				value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-				message: 'Wrong format',
-			},
-		},
-		{
-			id: 'phone',
-			name: 'Phone Number',
-			placeholder: '+1 202-555-0136',
-			required: {
-				value: true,
-				message: 'This field is required',
-			},
-			minLength: {
-				value: 9,
-				message: 'The phone number must be at least 9 characters long',
-			},
-			pattern: {
-				value: /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g,
-				message: 'Wrong format',
-			},
-		},
-	];
+	const [inputArr, setInputArr] = useState<InputsInt['billing']>([]);
+
+	useEffect(() => {
+		setInputArr(inputData.billing);
+	}, []);
 
 	return (
 		<div>
@@ -66,9 +32,12 @@ const Billing = () => {
 							type="text"
 							defaultValue=""
 							{...register(input.id, {
-								required: input.required,
-								minLength: input.minLength,
-								pattern: input.pattern,
+								required: input.required as { value: boolean; message: string },
+								minLength: input.minLength as {
+									value: number;
+									message: string;
+								},
+								pattern: input.pattern as { value: RegExp; message: string },
 							})}
 						/>
 						{errors[`${input.id}`] && (

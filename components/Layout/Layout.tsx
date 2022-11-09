@@ -17,6 +17,7 @@ const productArr = [
 	'zx9-speaker',
 	'zx7-speaker',
 	'yx1-earphones',
+	'checkout',
 ];
 
 const Layout = ({ children }: Props) => {

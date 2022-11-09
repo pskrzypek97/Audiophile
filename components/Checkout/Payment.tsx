@@ -1,29 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { useFormContext } from 'react-hook-form';
+
+import { inputData } from '../../data/inputData';
+
+import { InputsInt } from '../../models/inputs';
 
 import EMoney from './EMoney';
 import CashOnDelivery from './CashOnDelivery';
 
 const Payment = () => {
 	const [isEmoney, setIsEmoney] = useState(true);
+	const [radioArr, setRadioArr] = useState<InputsInt['payment']>([]);
 
 	const { register, unregister } = useFormContext();
 
-	const radioArr = [
-		{
-			id: 'e-money',
-			name: 'e-Money',
-			checked: true,
-			isEmoney: true,
-		},
-		{
-			id: 'cash',
-			name: 'Cash on Delivery',
-			checked: false,
-			isEmoney: false,
-		},
-	];
+	useEffect(() => {
+		setRadioArr(inputData.payment);
+	}, []);
 
 	const unregisterInputs = (state: boolean) => {
 		unregister('e-money pin');
@@ -45,7 +39,7 @@ const Payment = () => {
 									type="radio"
 									id={btn.id}
 									value={btn.id}
-									onClick={() => unregisterInputs(btn.isEmoney)}
+									onClick={() => unregisterInputs(btn.isEmoney!)}
 									defaultChecked={btn.checked}
 									{...register('payment-method')}
 								/>
@@ -58,7 +52,7 @@ const Payment = () => {
 				</div>
 				<div className="checkout__extra">
 					{!isEmoney && <CashOnDelivery />}
-					{isEmoney && <EMoney isEmoney={isEmoney} />}
+					{isEmoney && <EMoney />}
 				</div>
 			</div>
 		</div>

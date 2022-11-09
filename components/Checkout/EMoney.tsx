@@ -1,55 +1,22 @@
+import { useState, useEffect } from 'react';
+
 import { useFormContext, FieldError } from 'react-hook-form';
 
-const EMoney = ({ isEmoney }: { isEmoney: boolean }) => {
+import { inputData } from '../../data/inputData';
+
+import { InputsInt } from '../../models/inputs';
+
+const EMoney = () => {
 	const {
 		register,
 		formState: { errors },
 	} = useFormContext();
 
-	const inputArr = [
-		{
-			id: 'e-money number',
-			name: 'e-Money Number',
-			placeholder: '238521993',
-			required: {
-				value: isEmoney,
-				message: 'This field is required',
-			},
-			minLength: {
-				value: 9,
-				message: 'Number must be at least 9 characters long',
-			},
-			maxLength: {
-				value: 9,
-				message: 'Number cannot be longer than 9 characters',
-			},
-			pattern: {
-				value: /^[0-9]+$/,
-				message: 'Wrong format',
-			},
-		},
-		{
-			id: 'e-money pin',
-			name: 'e-Money PIN',
-			placeholder: '6891',
-			required: {
-				value: isEmoney,
-				message: 'This field is required',
-			},
-			minLength: {
-				value: 4,
-				message: 'PIN must be at least 4 characters long',
-			},
-			maxLength: {
-				value: 4,
-				message: 'PIN cannot be longer than 4 characters',
-			},
-			pattern: {
-				value: /^[0-9]+$/,
-				message: 'Wrong format',
-			},
-		},
-	];
+	const [inputArr, setInputArr] = useState<InputsInt['e-money']>([]);
+
+	useEffect(() => {
+		setInputArr(inputData['e-money']);
+	}, []);
 
 	return (
 		<>
@@ -63,10 +30,10 @@ const EMoney = ({ isEmoney }: { isEmoney: boolean }) => {
 						className="input input--text"
 						defaultValue=""
 						{...register(input.id, {
-							required: input.required,
-							minLength: input.minLength,
-							maxLength: input.maxLength,
-							pattern: input.pattern,
+							required: input.required as { value: boolean; message: string },
+							minLength: input.minLength as { value: number; message: string },
+							maxLength: input.maxLength as { value: number; message: string },
+							pattern: input.pattern as { value: RegExp; message: string },
 						})}
 					/>
 					{errors[`${input.id}`] && (
