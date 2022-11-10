@@ -1,5 +1,8 @@
-import React, { ReactNode, useContext } from 'react';
+import React, { ReactNode, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
+
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { setCartSlice } from '../../store/cart';
 
 import ModalContext from '../../store/ModalProvider';
 
@@ -24,6 +27,23 @@ const Layout = ({ children }: Props) => {
 	const { overlay, handleOverlay } = useContext(ModalContext);
 
 	const router = useRouter();
+
+	const { cart, id, total } = useAppSelector((state) => state.cart);
+	const dispatch = useAppDispatch();
+
+	// get cart when reloading the page or revisiting
+	useEffect(() => {
+		const cartObj = JSON.parse(window.localStorage.getItem('cart') as string);
+		if (cartObj) {
+			dispatch(setCartSlice(cartObj));
+		}
+		if (!cartObj) return;
+	}, []);
+
+	// update localstorage each time user updates cart
+	useEffect(() => {
+		localStorage.setItem('cart', JSON.stringify({ id, cart, total }));
+	}, [total]);
 
 	const mainStyle = productArr.some((product) =>
 		router.asPath.includes(product)

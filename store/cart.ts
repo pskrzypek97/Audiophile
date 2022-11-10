@@ -71,6 +71,11 @@ export const cartSlice = createSlice({
 		resetId: (state) => {
 			state.id = 0;
 		},
+		setCartSlice: (state, action) => {
+			state.cart = action.payload.cart;
+			state.total = action.payload.total;
+			state.id = action.payload.id;
+		},
 	},
 });
 
@@ -81,6 +86,7 @@ export const {
 	subtractAmount,
 	setId,
 	resetId,
+	setCartSlice,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
