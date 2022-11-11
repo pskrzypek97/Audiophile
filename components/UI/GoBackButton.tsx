@@ -6,7 +6,7 @@ const GoBackButton = () => {
 	return (
 		<>
 			<a className="btn btn--back" onClick={() => router.back()}>
-				Go Back
+				<span data-content="Go Back">Go Back</span>
 			</a>
 		</>
 	);

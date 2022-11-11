@@ -26,7 +26,9 @@ const Billing = () => {
 					<div key={input.id} className="input__container">
 						<label htmlFor={input.id}>{input.name}</label>
 						<input
-							className="input input--text"
+							className={`input input--text ${
+								errors[`${input.id}`] ? 'error' : ''
+							}`}
 							placeholder={input.placeholder}
 							id={input.id}
 							type="text"

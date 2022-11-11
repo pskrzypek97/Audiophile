@@ -13,6 +13,11 @@
 		&::placeholder {
 			color: darken($color-white, 60%);
 		}
+
+		&:focus,
+		&:hover {
+			border-color: $color-beige-light;
+		}
 	}
 
 	&--radio {
@@ -36,12 +41,17 @@
 
 			display: flex;
 			align-items: center;
+			transition: 0.2s;
 
 			cursor: pointer;
 
 			& > span {
 				margin-left: 6rem;
 				margin-bottom: 0;
+			}
+
+			&:hover {
+				border-color: $color-beige-light;
 			}
 		}
 
@@ -138,4 +148,8 @@
 		font-weight: $font-weight-medium;
 		color: $color-error;
 	}
+}
+
+.error {
+	border-color: $color-error;
 }

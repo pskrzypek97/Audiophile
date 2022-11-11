@@ -18,6 +18,13 @@
 		text-decoration: none;
 		letter-spacing: 0.2rem;
 		text-align: center;
+
+		transition: 0.25s;
+
+		&:hover,
+		&:focus {
+			box-shadow: inset 0 0 0 2em $color-beige-light;
+		}
 	}
 
 	&--social-media {
@@ -103,6 +110,29 @@
 
 		background-color: inherit;
 		color: $color-white-darken;
+
+		transition: clip-path 275ms ease;
+
+		&:hover span::before,
+		&:focus span::before {
+			clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+		}
+
+		& span {
+			position: relative;
+			display: inline-block;
+			color: $color-white-darken;
+
+			&::before {
+				position: absolute;
+				content: attr(data-content);
+				color: darken($color-grey, 40%);
+				text-decoration: underline;
+				text-decoration-color: darken($color-grey, 40%);
+				clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+				transition: clip-path 275ms ease;
+			}
+		}
 	}
 
 	&--amount {
@@ -115,6 +145,11 @@
 		color: $color-white-darken;
 		background-color: inherit;
 		border: none;
+
+		&:hover,
+		&:focus {
+			color: $color-beige-dark;
+		}
 	}
 
 	&--remove {
@@ -122,5 +157,11 @@
 		color: $color-white-darken;
 		border: none;
 		text-decoration: underline;
+		transition: 0.2s;
+
+		&:focus,
+		&:hover {
+			color: $color-beige-light;
+		}
 	}
 }

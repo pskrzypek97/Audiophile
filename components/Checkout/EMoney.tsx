@@ -27,7 +27,9 @@ const EMoney = () => {
 						type="text"
 						id={input.id}
 						placeholder={input.placeholder}
-						className="input input--text"
+						className={`input input--text ${
+							errors[`${input.id}`] ? 'error' : ''
+						}`}
 						defaultValue=""
 						{...register(input.id, {
 							required: input.required as { value: boolean; message: string },

@@ -29,11 +29,26 @@
 	letter-spacing: 0.3rem;
 
 	color: $color-white;
-	transition: all 0.3s;
+	overflow: hidden;
+	transition: background-position 275ms ease;
+
+	background: linear-gradient(
+		to right,
+		$color-beige-dark,
+		$color-beige-dark 50%,
+		$color-white 50%
+	);
+
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-size: 200% 100%;
+	background-position: 100%;
 
 	&:hover,
 	&:active {
 		color: $color-beige-dark;
+		background-position: 0 100%;
 	}
 
 	@media only screen and (max-width: $bp-large) {
@@ -46,5 +61,5 @@
 }
 
 .link-active {
-	color: $color-beige-dark;
+	background-position: 0 100%;
 }

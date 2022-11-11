@@ -27,7 +27,9 @@ const Shipping = () => {
 						<label htmlFor={input.id}>{input.name}</label>
 						<input
 							placeholder={input.placeholder}
-							className="input input--text"
+							className={`input input--text ${
+								errors[`${input.id}`] ? 'error' : ''
+							}`}
 							type="text"
 							defaultValue=""
 							{...register(input.id, {
