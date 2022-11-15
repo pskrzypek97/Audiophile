@@ -1,10 +1,23 @@
+import { motion } from 'framer-motion';
+import { sectionVariants } from '../../variants/sectionVariants';
+
 import SeeProduct from '../UI/SeeProduct';
 
 const Recommend = () => {
 	return (
-		<section className="recommend">
+		<motion.section
+			className="recommend"
+			variants={sectionVariants}
+			initial="hidden"
+			whileInView="visible"
+			viewport={{ once: true }}
+		>
 			<div className="recommend__zx9">
-				<img src="assets/home/desktop/image-speaker-zx9.png" alt="" />
+				<img
+					src="assets/home/desktop/image-speaker-zx9.png"
+					alt="ZX9 Speaker"
+					loading="lazy"
+				/>
 
 				<article>
 					<h1 className="heading-1">zx9 speaker</h1>
@@ -25,6 +38,7 @@ const Recommend = () => {
 				<img
 					src="assets/home/desktop/image-earphones-yx1.jpg"
 					alt="YX1 Earphones"
+					loading="lazy"
 				/>
 			</picture>
 
@@ -32,7 +46,7 @@ const Recommend = () => {
 				<h4 className="heading-4">yx1 earphones</h4>
 				<SeeProduct url={'/earphones/yx1-earphones'} />
 			</div>
-		</section>
+		</motion.section>
 	);
 };
 

@@ -1,5 +1,7 @@
 import { useContext } from 'react';
 
+import { AnimatePresence } from 'framer-motion';
+
 import ModalContext from '../../store/ModalProvider';
 
 import Hamburger from './Hamburger';
@@ -12,19 +14,21 @@ const Navbar = () => {
 
 	return (
 		<nav className="navigation">
-			<Hamburger />
-			<svg className="logo">
-				<use href="/sprite.svg#logo" />
-			</svg>
+			<div className="navigation__content">
+				<Hamburger />
+				<svg className="logo">
+					<use href="/sprite.svg#logo" />
+				</svg>
 
-			<Links />
+				<Links />
 
-			<svg className="cart" onClick={handleCart}>
-				<use href="/sprite.svg#icon-cart"></use>
-			</svg>
+				<svg className="cart" onClick={handleCart}>
+					<use href="/sprite.svg#icon-cart"></use>
+				</svg>
 
-			{cart && <Cart />}
-			{hamburgerMenu && <HamburgerMenu />}
+				<AnimatePresence>{cart && <Cart />}</AnimatePresence>
+				<AnimatePresence>{hamburgerMenu && <HamburgerMenu />}</AnimatePresence>
+			</div>
 		</nav>
 	);
 };

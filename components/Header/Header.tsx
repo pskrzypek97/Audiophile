@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 import { ProductData } from '../../models/product';
 
 import SeeProduct from '../UI/SeeProduct';
@@ -7,6 +9,19 @@ const Header = ({
 }: {
 	category: ProductData['category'] | false;
 }) => {
+	const articleVariants = {
+		hidden: {
+			x: '-100%',
+		},
+		visible: {
+			x: 0,
+			transition: {
+				duration: 0.8,
+				type: 'spring',
+			},
+		},
+	};
+
 	if (category) {
 		return (
 			<header className="header header--category">
@@ -16,7 +31,12 @@ const Header = ({
 	} else {
 		return (
 			<header className="header header--home">
-				<article className="header__text">
+				<motion.article
+					className="header__text"
+					variants={articleVariants}
+					initial="hidden"
+					animate="visible"
+				>
 					<span className="span span--new span--index">new product</span>
 					<h1 className="heading-1">xx99 mark ii headphones</h1>
 					<p className="paragraph paragraph--header">
@@ -24,7 +44,7 @@ const Header = ({
 						made for the passionate music enthusiast.
 					</p>
 					<SeeProduct url={'/headphones/xx99-mark-two-headphones'} />
-				</article>
+				</motion.article>
 			</header>
 		);
 	}

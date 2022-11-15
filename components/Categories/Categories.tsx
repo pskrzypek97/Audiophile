@@ -1,13 +1,20 @@
 import Link from 'next/link';
 
+import { motion } from 'framer-motion';
+import { sectionVariants } from '../../variants/sectionVariants';
+
 const Categories = ({ onHamburger }: { onHamburger: boolean }) => {
 	const categories = ['headphones', 'speakers', 'earphones'];
 
 	return (
-		<section
+		<motion.section
 			className={`categories ${
 				onHamburger ? 'categories--hamburger-menu' : ''
 			}`}
+			variants={sectionVariants}
+			initial="hidden"
+			whileInView="visible"
+			viewport={{ once: true }}
 		>
 			{categories.map((category) => (
 				<Link key={category} href={`/${category}`} legacyBehavior>
@@ -22,7 +29,7 @@ const Categories = ({ onHamburger }: { onHamburger: boolean }) => {
 					</a>
 				</Link>
 			))}
-		</section>
+		</motion.section>
 	);
 };
 

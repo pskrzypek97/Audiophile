@@ -1,10 +1,19 @@
+import { motion } from 'framer-motion';
+import { modalVariants } from '../../variants/modalVariants';
+
 import Categories from '../Categories/Categories';
 
 const HamburgerMenu = () => {
 	return (
-		<div className="hamburger-menu__menu">
+		<motion.div
+			className="hamburger-menu__menu"
+			variants={modalVariants}
+			initial="hidden"
+			animate="visible"
+			exit="exit"
+		>
 			<Categories onHamburger={true} />
-		</div>
+		</motion.div>
 	);
 };
 

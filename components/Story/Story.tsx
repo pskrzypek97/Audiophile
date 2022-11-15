@@ -1,3 +1,6 @@
+import { motion } from 'framer-motion';
+import { sectionVariants } from '../../variants/sectionVariants';
+
 import { useImage } from '../../hooks/useImage';
 
 const Story = () => {
@@ -8,7 +11,13 @@ const Story = () => {
 	});
 
 	return (
-		<section className="story">
+		<motion.section
+			className="story"
+			variants={sectionVariants}
+			initial="hidden"
+			whileInView="visible"
+			viewport={{ once: true }}
+		>
 			<div className="story__left">
 				<h2 className="heading-2">
 					Bringing you the <span>best</span> audio gear
@@ -32,9 +41,9 @@ const Story = () => {
 					srcSet="/assets/shared/tablet/image-best-gear.jpg"
 					media="(max-width: 850px)"
 				/> */}
-				<img src={image} alt="Man listening to music" />
+				<img src={image} alt="Man listening to music" loading="lazy" />
 			</picture>
-		</section>
+		</motion.section>
 	);
 };
 

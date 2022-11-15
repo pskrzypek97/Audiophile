@@ -4,6 +4,9 @@ import { useRouter } from 'next/router';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { setCartSlice } from '../../store/cart';
 
+import { motion, AnimatePresence } from 'framer-motion';
+import { modalVariants } from '../../variants/modalVariants';
+
 import ModalContext from '../../store/ModalProvider';
 
 import Navbar from '../Navbar/Navbar';
@@ -54,7 +57,18 @@ const Layout = ({ children }: Props) => {
 	return (
 		<div className="container">
 			<Navbar />
-			{overlay && <div className="overlay" onClick={handleOverlay}></div>}
+			<AnimatePresence>
+				{overlay && (
+					<motion.div
+						className="overlay"
+						onClick={handleOverlay}
+						variants={modalVariants}
+						initial="hidden"
+						animate="visible"
+						exit="exit"
+					></motion.div>
+				)}
+			</AnimatePresence>
 			<main className={mainStyle}>{children}</main>
 			<Footer />
 		</div>

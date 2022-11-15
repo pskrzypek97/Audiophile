@@ -25,7 +25,12 @@ const SmallProduct = ({ type, product, child }: SmallProduct) => {
 	return (
 		<div className={`${type}__product`}>
 			<picture>
-				<img className={`${type}__img`} src={product.cartImage} />
+				<img
+					className={`${type}__img`}
+					src={product.cartImage}
+					loading="lazy"
+					alt={product.name}
+				/>
 			</picture>
 			<div>
 				<p className="paragraph paragraph--product">{product.name}</p>

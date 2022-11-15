@@ -16,6 +16,10 @@
 		@extend %margin-inline-10;
 	}
 
+	& > *:first-child {
+		margin-top: 5rem;
+	}
+
 	&--product {
 		& > * {
 			@extend %margin-inline-10;

@@ -1,3 +1,6 @@
+import { motion } from 'framer-motion';
+import { sectionVariants } from '../../variants/sectionVariants';
+
 import { ProductData } from '../../models/product';
 
 const Features = ({
@@ -8,7 +11,13 @@ const Features = ({
 	includes: ProductData['includes'];
 }) => {
 	return (
-		<section className="features">
+		<motion.section
+			className="features"
+			variants={sectionVariants}
+			initial="hidden"
+			whileInView="visible"
+			viewport={{ once: true }}
+		>
 			<div>
 				<h3 className="heading-3">features</h3>
 				<p style={{ whiteSpace: 'pre-line' }} className="paragraph">
@@ -28,7 +37,7 @@ const Features = ({
 					))}
 				</ul>
 			</div>
-		</section>
+		</motion.section>
 	);
 };
 

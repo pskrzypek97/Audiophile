@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 
 import { useRouter } from 'next/router';
 
+import { motion } from 'framer-motion';
+import { sectionVariants } from '../../variants/sectionVariants';
+
 import { useImage } from '../../hooks/useImage';
 
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
@@ -87,15 +90,24 @@ const Product = ({ product }: { product: ProductData }) => {
 	// })
 
 	return (
-		<div
+		<motion.div
 			className={`product__container ${
 				isProductPage ? '' : 'product__container--category'
 			}`}
+			variants={sectionVariants}
+			initial="hidden"
+			whileInView="visible"
+			viewport={{ once: true }}
 		>
 			<picture>
 				<source srcSet={productImage.mobile} media="(max-width: 600px)" />
 				<source srcSet={productImage.tablet} media="(max-width: 850px)" />
-				<img src={productImage.desktop} className="product__image" />
+				<img
+					src={productImage.desktop}
+					className="product__image"
+					alt={product.name}
+					loading="lazy"
+				/>
 			</picture>
 			<article className="product__detail">
 				{product.new && <span className="span span--new">new product</span>}
@@ -119,7 +131,7 @@ const Product = ({ product }: { product: ProductData }) => {
 					<SeeProduct url={`/${product.category}/${product.slug}`} />
 				)}
 			</article>
-		</div>
+		</motion.div>
 	);
 };
 

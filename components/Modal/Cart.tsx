@@ -1,5 +1,8 @@
 import Link from 'next/link';
 
+import { motion } from 'framer-motion';
+import { modalVariants } from '../../variants/modalVariants';
+
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 
 import { removeAll } from '../../store/cart';
@@ -12,7 +15,13 @@ const Cart = () => {
 	const dispatch = useAppDispatch();
 
 	return (
-		<div className="modal modal--cart">
+		<motion.div
+			className="modal modal--cart"
+			variants={modalVariants}
+			initial="hidden"
+			animate="visible"
+			exit="exit"
+		>
 			<div className="modal__head">
 				<h6 className="heading-6">Cart ({cart.length})</h6>
 				<button
@@ -43,7 +52,7 @@ const Cart = () => {
 					checkout
 				</Link>
 			)}
-		</div>
+		</motion.div>
 	);
 };
 

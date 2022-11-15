@@ -7,6 +7,9 @@ import ModalContext from '../../store/ModalProvider';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import { motion } from 'framer-motion';
+import { modalVariants } from '../../variants/modalVariants';
+
 import SmallProduct from '../SmallProduct/SmallProduct';
 import { ChosenProduct } from '../../models/chosenProduct';
 
@@ -47,7 +50,12 @@ const SuccessModal = () => {
 	}, []);
 
 	return (
-		<div className="modal modal--checkout">
+		<motion.div
+			className="modal modal--checkout"
+			variants={modalVariants}
+			initial="hidden"
+			animate="visible"
+		>
 			<svg className="modal__logo">
 				<use href="/sprite.svg#icon-order-confirmation" />
 			</svg>
@@ -97,7 +105,7 @@ const SuccessModal = () => {
 			<Link href="/" className="btn btn--see-product">
 				back to home
 			</Link>
-		</div>
+		</motion.div>
 	);
 };
 
