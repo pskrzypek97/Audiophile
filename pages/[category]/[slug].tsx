@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+
 import { GetStaticPaths, GetStaticProps } from 'next';
 
 import { data } from '../../data/shopData';
@@ -41,18 +43,29 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const ProductPage = ({ product }: { product: ProductData }) => {
+	const goBackButton = useMemo(() => <GoBackButton />, []);
+
+	const categoriesAndStory = useMemo(
+		() => (
+			<>
+				<Categories onHamburger={false} />
+				<Story />
+			</>
+		),
+		[]
+	);
+
 	return (
 		<>
 			<HeadComp subtitle={product.name} />
-			<GoBackButton />
+			{goBackButton}
 			<section className="product">
 				<Product product={product} />
 			</section>
 			<Features features={product.features} includes={product.includes} />
 			<Gallery gallery={product.gallery} />
 			<YouMayLike others={product.others} />
-			<Categories onHamburger={false} />
-			<Story />
+			{categoriesAndStory}
 		</>
 	);
 };

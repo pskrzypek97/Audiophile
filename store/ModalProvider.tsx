@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useState, useEffect, useMemo, ReactNode } from 'react';
 
 import { useRouter } from 'next/router';
 
@@ -87,20 +87,33 @@ export const ModalProvider = ({ children }: Props) => {
 		}
 	};
 
+	const memoizedValues = useMemo(
+		() => ({
+			overlay,
+			cart,
+			hamburgerMenu,
+			successModal,
+			handleOverlay,
+			handleCart,
+			handleSuccessModal,
+			handleSuccessModalOff,
+			handleHamburgerMenu,
+		}),
+		[
+			overlay,
+			cart,
+			hamburgerMenu,
+			successModal,
+			handleOverlay,
+			handleCart,
+			handleSuccessModal,
+			handleSuccessModalOff,
+			handleHamburgerMenu,
+		]
+	);
+
 	return (
-		<ModalContext.Provider
-			value={{
-				overlay,
-				cart,
-				hamburgerMenu,
-				successModal,
-				handleOverlay,
-				handleCart,
-				handleSuccessModal,
-				handleSuccessModalOff,
-				handleHamburgerMenu,
-			}}
-		>
+		<ModalContext.Provider value={memoizedValues}>
 			{children}
 		</ModalContext.Provider>
 	);

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 import { GetStaticProps, GetStaticPaths } from 'next';
 
@@ -51,6 +51,18 @@ const CategoryPage = ({ products }: { products: ProductData[] }) => {
 		setProductsArr(sortedProducts);
 	}, [products]);
 
+	// memonized Categories and Story so they don't re-render while
+	// new productsArr is updated
+	const categoriesAndStory = useMemo(
+		() => (
+			<>
+				<Categories onHamburger={false} />
+				<Story />
+			</>
+		),
+		[]
+	);
+
 	return (
 		<>
 			<HeadComp subtitle={productsArr[0]?.category} />
@@ -60,8 +72,7 @@ const CategoryPage = ({ products }: { products: ProductData[] }) => {
 					<Product key={product.id} product={product} />
 				))}
 			</section>
-			<Categories onHamburger={false} />
-			<Story />
+			{categoriesAndStory}
 		</>
 	);
 };
