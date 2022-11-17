@@ -166,4 +166,14 @@
 			color: $color-beige-light;
 		}
 	}
+
+	&--success-modal {
+		margin-top: 0;
+
+		font-size: 1.5rem;
+		border: none;
+
+		background-color: inherit;
+		color: $color-white-darken;
+	}
 }

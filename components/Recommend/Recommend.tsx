@@ -16,7 +16,6 @@ const Recommend = () => {
 				<img
 					src="assets/home/desktop/image-speaker-zx9.png"
 					alt="ZX9 Speaker"
-					loading="lazy"
 				/>
 
 				<article>

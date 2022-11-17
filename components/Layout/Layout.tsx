@@ -41,12 +41,12 @@ const Layout = ({ children }: Props) => {
 			dispatch(setCartSlice(cartObj));
 		}
 		if (!cartObj) return;
-	}, []);
+	}, [dispatch]);
 
 	// update localstorage each time user updates cart
 	useEffect(() => {
 		localStorage.setItem('cart', JSON.stringify({ id, cart, total }));
-	}, [total]);
+	}, [total, id, cart]);
 
 	const mainStyle = productArr.some((product) =>
 		router.asPath.includes(product)

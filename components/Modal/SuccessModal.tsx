@@ -29,7 +29,7 @@ const SuccessModal = () => {
 	const [slicedCart, setSlicedCart] = useState<
 		SetStateAction<ChosenProduct[] | any>
 	>([]);
-	useEffect(() => setSlicedCart(cart.slice(1)), []);
+	useEffect(() => setSlicedCart(cart.slice(1)), [cart]);
 
 	// reset cart and turn modal off
 	// when leaving page while successModal is true
@@ -47,7 +47,7 @@ const SuccessModal = () => {
 		return () => {
 			router.events.off('routeChangeStart', handleRouteChange);
 		};
-	}, []);
+	}, [dispatch, handleSuccessModalOff, router.events, successModal]);
 
 	return (
 		<motion.div
@@ -87,7 +87,7 @@ const SuccessModal = () => {
 					{cart.length > 1 && (
 						<div className="confirmation__more">
 							<button
-								className="btn btn--back"
+								className="btn btn--success-modal"
 								onClick={() => setShowMore((prevShowMore) => !prevShowMore)}
 							>
 								{!showMore && `and ${cart.length - 1} other item(s)`}

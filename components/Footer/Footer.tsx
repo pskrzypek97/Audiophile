@@ -14,10 +14,10 @@ const Footer = () => {
 			<div className="footer__bottom">
 				<div className="footer__text">
 					<p className="paragraph paragraph--white">
-						Audiophile is an all in one stop to fulfill your audio needs. We're
-						a small team of music lovers and sound specialists who are devoted
-						to helping you get the most out of personal audio. Come and visit
-						our demo facility - we're open 7 days a week.
+						Audiophile is an all in one stop to fulfill your audio needs.
+						We&apos;re a small team of music lovers and sound specialists who
+						are devoted to helping you get the most out of personal audio. Come
+						and visit our demo facility - we&apos;re open 7 days a week.
 					</p>
 
 					<p className="paragraph paragraph--white">

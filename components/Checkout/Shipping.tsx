@@ -16,7 +16,7 @@ const Shipping = () => {
 
 	useEffect(() => {
 		setInputArr(inputData.shipping);
-	});
+	}, []);
 
 	return (
 		<div>
