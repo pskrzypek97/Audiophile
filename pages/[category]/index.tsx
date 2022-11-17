@@ -47,7 +47,7 @@ const CategoryPage = ({ products }: { products: ProductData[] }) => {
 
 	// sort array inside useEffect so it doesn't cause hydration bug
 	useEffect(() => {
-		const sortedProducts = [...products].sort((a, b) => a.id + b.id);
+		const sortedProducts = [...products].sort((a, b) => b.id - a.id);
 		setProductsArr(sortedProducts);
 	}, [products]);
 
