@@ -7,6 +7,7 @@ const HamburgerMenu = () => {
 	return (
 		<motion.div
 			className="hamburger-menu__menu"
+			id="hamburger-menu"
 			variants={modalVariants}
 			initial="hidden"
 			animate="visible"

@@ -17,6 +17,7 @@ const Cart = () => {
 	return (
 		<motion.div
 			className="modal modal--cart"
+			id="cart"
 			variants={modalVariants}
 			initial="hidden"
 			animate="visible"

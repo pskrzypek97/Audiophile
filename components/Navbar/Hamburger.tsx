@@ -7,7 +7,11 @@ const Hamburger = () => {
 
 	return (
 		<>
-			<svg className="hamburger-menu" onClick={handleHamburgerMenu}>
+			<svg
+				className="hamburger-menu"
+				onClick={handleHamburgerMenu}
+				aria-controls="hamburger-menu"
+			>
 				<use href="/sprite.svg#icon-hamburger"></use>
 			</svg>
 		</>

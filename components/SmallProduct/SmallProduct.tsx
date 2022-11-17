@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import { useAppDispatch } from '../../store/hooks';
 import { incrementAmount, subtractAmount } from '../../store/cart';
 
@@ -25,11 +27,14 @@ const SmallProduct = ({ type, product, child }: SmallProduct) => {
 	return (
 		<div className={`${type}__product`}>
 			<picture>
-				<img
+				<Image
 					className={`${type}__img`}
 					src={product.cartImage}
-					loading="lazy"
 					alt={product.name}
+					width="0"
+					height="0"
+					sizes="100vw"
+					style={{ width: 'inherit', height: 'inherit' }}
 				/>
 			</picture>
 			<div>

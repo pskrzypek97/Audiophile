@@ -22,7 +22,7 @@ const Navbar = () => {
 
 				<Links />
 
-				<svg className="cart" onClick={handleCart}>
+				<svg className="cart" onClick={handleCart} aria-controls="cart">
 					<use href="/sprite.svg#icon-cart"></use>
 				</svg>
 
