@@ -11,7 +11,7 @@ export default function Home() {
 		<>
 			<HeadComp subtitle={'Home'} />
 			<Header category={false} />
-			<Categories onHamburger={false} />
+			<Categories />
 			<Recommend />
 			<Story />
 		</>

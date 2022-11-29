@@ -56,7 +56,7 @@ const CategoryPage = ({ products }: { products: ProductData[] }) => {
 	const categoriesAndStory = useMemo(
 		() => (
 			<>
-				<Categories onHamburger={false} />
+				<Categories />
 				<Story />
 			</>
 		),
