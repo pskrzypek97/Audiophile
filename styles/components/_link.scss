@@ -3,6 +3,19 @@
 
 	list-style: none;
 
+	&--hamburger {
+		flex-direction: column;
+
+		& li {
+			align-self: flex-start;
+		}
+
+		& a {
+			font-size: 2rem;
+			margin-bottom: 5rem;
+		}
+	}
+
 	@media only screen and (max-width: $bp-medium) {
 		align-self: flex-start;
 		margin-top: 3rem;
@@ -20,7 +33,7 @@
 }
 
 .link {
-	margin-right: 8rem;
+	margin-right: 5.5rem;
 
 	font-size: 1.3rem;
 	font-weight: $font-weight-bold;

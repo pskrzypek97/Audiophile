@@ -12,10 +12,7 @@ export const useImage = (images: Image) => {
 				setCurImage(images.tablet);
 			else if (window.innerWidth <= 600) setCurImage(images.mobile);
 		};
-		if (window.innerWidth > 850) setCurImage(images.desktop);
-		else if (window.innerWidth <= 850 && window.innerWidth > 600)
-			setCurImage(images.tablet);
-		else if (window.innerWidth <= 600) setCurImage(images.mobile);
+		handleScreenWidth();
 
 		window.addEventListener('resize', handleScreenWidth);
 

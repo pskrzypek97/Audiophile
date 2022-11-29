@@ -21,7 +21,7 @@ const Summary = () => {
 			</div>
 			<SummaryPrice total={total} />
 
-			<button form="checkout" className="btn btn--see-product">
+			<button form="checkout" className="btn btn--see-product btn--long">
 				continue & pay
 			</button>
 		</section>

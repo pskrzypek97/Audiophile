@@ -49,7 +49,10 @@ const Cart = () => {
 				</div>
 			</div>
 			{cart.length >= 1 && (
-				<Link href={`/checkout/${id}`} className="btn btn--see-product">
+				<Link
+					href={`/checkout/${id}`}
+					className="btn btn--see-product btn--long"
+				>
 					checkout
 				</Link>
 			)}

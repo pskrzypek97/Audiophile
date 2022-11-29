@@ -2,11 +2,9 @@ import { useState, useEffect } from 'react';
 
 import { useFormContext, FieldError } from 'react-hook-form';
 
-import { inputData } from '../../data/inputData';
-
 import { InputsInt } from '../../models/inputs';
 
-const EMoney = () => {
+const EMoney = ({ emoney }: { emoney: InputsInt['e-money'] }) => {
 	const {
 		register,
 		formState: { errors },
@@ -15,7 +13,7 @@ const EMoney = () => {
 	const [inputArr, setInputArr] = useState<InputsInt['e-money']>([]);
 
 	useEffect(() => {
-		setInputArr(inputData['e-money']);
+		setInputArr(emoney);
 	}, []);
 
 	return (

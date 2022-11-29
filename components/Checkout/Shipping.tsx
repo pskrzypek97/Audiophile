@@ -2,11 +2,9 @@ import { useState, useEffect } from 'react';
 
 import { useFormContext, FieldError } from 'react-hook-form';
 
-import { inputData } from '../../data/inputData';
-
 import { InputsInt } from '../../models/inputs';
 
-const Shipping = () => {
+const Shipping = ({ shipping }: { shipping: InputsInt['shipping'] }) => {
 	const {
 		register,
 		formState: { errors },
@@ -15,7 +13,7 @@ const Shipping = () => {
 	const [inputArr, setInputArr] = useState<InputsInt['shipping']>([]);
 
 	useEffect(() => {
-		setInputArr(inputData.shipping);
+		setInputArr(shipping);
 	}, []);
 
 	return (

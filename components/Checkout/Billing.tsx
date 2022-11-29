@@ -2,11 +2,9 @@ import { useState, useEffect } from 'react';
 
 import { useFormContext, FieldError } from 'react-hook-form';
 
-import { inputData } from '../../data/inputData';
-
 import { InputsInt } from '../../models/inputs';
 
-const Billing = () => {
+const Billing = ({ billing }: { billing: InputsInt['billing'] }) => {
 	const {
 		register,
 		formState: { errors },
@@ -15,7 +13,7 @@ const Billing = () => {
 	const [inputArr, setInputArr] = useState<InputsInt['billing']>([]);
 
 	useEffect(() => {
-		setInputArr(inputData.billing);
+		setInputArr(billing);
 	}, []);
 
 	return (

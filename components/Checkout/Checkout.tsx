@@ -4,6 +4,8 @@ import ModalContext from '../../store/ModalProvider';
 
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 
+import { inputData } from '../../data/inputData';
+
 import { CheckoutForm } from '../../models/checkoutForm';
 
 import Billing from './Billing';
@@ -42,9 +44,9 @@ const Checkout = ({ onSuccess }: OnSuccessProp) => {
 			>
 				<h3 className="heading-3">checkout</h3>
 
-				<Billing />
-				<Shipping />
-				<Payment />
+				<Billing billing={inputData.billing} />
+				<Shipping shipping={inputData.shipping} />
+				<Payment payment={inputData.payment} emoney={inputData['e-money']} />
 			</form>
 		</FormProvider>
 	);

@@ -7,7 +7,7 @@ const activeLink = (dir: string | undefined, link: string) => {
 	return active;
 };
 
-const Links = () => {
+const Links = ({ isHamburger }: { isHamburger: boolean }) => {
 	const [curDir, setCurDir] = useState<string | undefined>();
 
 	const links = ['', 'headphones', 'speakers', 'earphones'];
@@ -18,7 +18,7 @@ const Links = () => {
 	}, [router.asPath]);
 
 	return (
-		<ul className="links">
+		<ul className={`links ${isHamburger ? 'links--hamburger' : ''}`}>
 			{links.map((link) => (
 				<Link key={link} href={`/${link}`} className={activeLink(curDir, link)}>
 					{link === '' ? 'home' : link}

@@ -2,13 +2,13 @@ import { useContext } from 'react';
 
 import ModalContext from '../../store/ModalProvider';
 
-const Hamburger = () => {
+const HamburgerIcon = () => {
 	const { handleHamburgerMenu } = useContext(ModalContext);
 
 	return (
 		<>
 			<svg
-				className="hamburger-menu"
+				className="hamburger-icon"
 				onClick={handleHamburgerMenu}
 				aria-controls="hamburger-menu"
 			>
@@ -18,4 +18,4 @@ const Hamburger = () => {
 	);
 };
 
-export default Hamburger;
+export default HamburgerIcon;

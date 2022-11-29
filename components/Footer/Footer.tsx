@@ -8,7 +8,7 @@ const Footer = () => {
 				<svg className="logo">
 					<use href="/sprite.svg#logo" />
 				</svg>
-				<Links />
+				<Links isHamburger={false} />
 			</div>
 
 			<div className="footer__bottom">

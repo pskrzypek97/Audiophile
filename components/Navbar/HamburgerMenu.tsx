@@ -1,19 +1,41 @@
 import { motion } from 'framer-motion';
-import { modalVariants } from '../../variants/modalVariants';
 
-import Categories from '../Categories/Categories';
+import Links from '../UI/Links';
+
+const hamburgerVariants = {
+	hidden: {
+		opacity: 0,
+		x: '-100%',
+	},
+	visible: {
+		opacity: 1,
+		x: 0,
+
+		transition: {
+			duration: 0.2,
+		},
+	},
+	exit: {
+		opacity: 0,
+		x: '-100%',
+
+		transition: {
+			duration: 0.2,
+		},
+	},
+};
 
 const HamburgerMenu = () => {
 	return (
 		<motion.div
-			className="hamburger-menu__menu"
+			className="hamburger-menu"
 			id="hamburger-menu"
-			variants={modalVariants}
+			variants={hamburgerVariants}
 			initial="hidden"
 			animate="visible"
 			exit="exit"
 		>
-			<Categories onHamburger={true} />
+			<Links isHamburger={true} />
 		</motion.div>
 	);
 };

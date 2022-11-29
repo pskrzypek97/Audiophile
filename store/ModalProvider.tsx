@@ -38,11 +38,25 @@ export const ModalProvider = ({ children }: Props) => {
 
 	const router = useRouter();
 
+	// turn off modals when route changes
 	useEffect(() => {
 		setCart(false);
 		setOverlay(false);
 		setHamburgerMenu(false);
 	}, [router.asPath]);
+
+	// turn off hamburgerMenu when screen width is less than 851px
+	useEffect(() => {
+		const handleHamburgerMenuOff = () => {
+			if (screen.width > 850 && hamburgerMenu) {
+				setHamburgerMenu(false);
+			}
+		};
+
+		window.addEventListener('resize', handleHamburgerMenuOff);
+
+		return window.removeEventListener('resize', handleHamburgerMenuOff);
+	}, []);
 
 	const handleOverlay = () => {
 		if (successModal) return;

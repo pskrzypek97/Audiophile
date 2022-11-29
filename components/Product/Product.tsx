@@ -5,8 +5,6 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { sectionVariants } from '../../variants/sectionVariants';
 
-import { useImage } from '../../hooks/useImage';
-
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { addToCart, setId } from '../../store/cart';
 
@@ -82,13 +80,6 @@ const Product = ({ product }: { product: ProductData }) => {
 		};
 	}, [router]);
 
-	// set correct image based on screen width
-	const image = useImage({
-		mobile: productImage.mobile,
-		tablet: productImage.tablet,
-		desktop: productImage.desktop,
-	});
-
 	return (
 		<motion.div
 			className={`product__container ${
@@ -100,7 +91,13 @@ const Product = ({ product }: { product: ProductData }) => {
 			viewport={{ once: true }}
 		>
 			<picture>
-				<img src={image} className="product__image" alt={product.name} />
+				<source srcSet={productImage.mobile} media="(max-width: 600px)" />
+				<source srcSet={productImage.tablet} media="(max-width: 850px)" />
+				<img
+					src={productImage.desktop}
+					className="product__image"
+					alt={product.name}
+				/>
 			</picture>
 			<article className="product__detail">
 				{product.new && <span className="span span--new">new product</span>}

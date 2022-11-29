@@ -2,21 +2,24 @@ import { useState, useEffect } from 'react';
 
 import { useFormContext } from 'react-hook-form';
 
-import { inputData } from '../../data/inputData';
-
 import { InputsInt } from '../../models/inputs';
 
 import EMoney from './EMoney';
 import CashOnDelivery from './CashOnDelivery';
 
-const Payment = () => {
+interface PaymentInt {
+	payment: InputsInt['payment'];
+	emoney: InputsInt['e-money'];
+}
+
+const Payment = ({ payment, emoney }: PaymentInt) => {
 	const [isEmoney, setIsEmoney] = useState(true);
 	const [radioArr, setRadioArr] = useState<InputsInt['payment']>([]);
 
 	const { register, unregister } = useFormContext();
 
 	useEffect(() => {
-		setRadioArr(inputData.payment);
+		setRadioArr(payment);
 	}, []);
 
 	const unregisterInputs = (state: boolean) => {
@@ -52,7 +55,7 @@ const Payment = () => {
 				</div>
 				<div className="checkout__extra">
 					{!isEmoney && <CashOnDelivery />}
-					{isEmoney && <EMoney />}
+					{isEmoney && <EMoney emoney={emoney} />}
 				</div>
 			</div>
 		</div>

@@ -1,5 +1,9 @@
 %margin-inline-10 {
-	margin-inline: 10%;
+	margin-inline: 15%;
+
+	@media only screen and (max-width: $bp-large) {
+		margin-inline: 10%;
+	}
 
 	@media only screen and (max-width: $bp-big) {
 		margin-inline: 3%;

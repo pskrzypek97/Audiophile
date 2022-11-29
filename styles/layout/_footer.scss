@@ -1,6 +1,6 @@
 .footer {
 	position: relative;
-	padding-inline: 10%;
+	padding-inline: 15%;
 	padding-block: 5rem;
 
 	background-color: $color-black;
@@ -72,6 +72,10 @@
 		@media only screen and (max-width: $bp-tiny) {
 			right: 37%;
 		}
+	}
+
+	@media only screen and (max-width: $bp-large) {
+		padding-inline: 10%;
 	}
 
 	@media only screen and (max-width: $bp-big) {

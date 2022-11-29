@@ -3,14 +3,12 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { sectionVariants } from '../../variants/sectionVariants';
 
-const Categories = ({ onHamburger }: { onHamburger: boolean }) => {
+const Categories = () => {
 	const categories = ['headphones', 'speakers', 'earphones'];
 
 	return (
 		<motion.section
-			className={`categories ${
-				onHamburger ? 'categories--hamburger-menu' : ''
-			}`}
+			className={'categories'}
 			variants={sectionVariants}
 			initial="hidden"
 			whileInView="visible"
