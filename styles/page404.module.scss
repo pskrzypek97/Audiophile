@@ -1,12 +1,11 @@
-.goback {
-	align-self: center;
-	margin-inline: 10%;
-	margin-top: 5rem;
-}
-
 .main {
+	height: 60vh;
+
+	padding-top: 20rem;
+
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 
 	& > * {

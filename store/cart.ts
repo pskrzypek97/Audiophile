@@ -64,6 +64,7 @@ export const cartSlice = createSlice({
 		removeAll: (state) => {
 			state.cart = [];
 			state.total = 0;
+			state.id = 0;
 		},
 		setId: (state, action) => {
 			state.id = action.payload;
