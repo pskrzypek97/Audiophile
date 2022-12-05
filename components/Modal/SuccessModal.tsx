@@ -1,53 +1,19 @@
-import { useState, useContext, useEffect, SetStateAction } from 'react';
-
-import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { removeAll, resetId } from '../../store/cart';
-import ModalContext from '../../store/ModalProvider';
+import { useState } from 'react';
 
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 import { motion } from 'framer-motion';
 import { modalVariants } from '../../variants/modalVariants';
 
 import SmallProduct from '../SmallProduct/SmallProduct';
 import { ChosenProduct } from '../../models/chosenProduct';
+import { useSuccessModal } from '../../hooks/useSuccessModal';
 
 const SuccessModal = () => {
-	// access cart and total
-	const { cart, total } = useAppSelector((store) => store.cart);
-	const dispatch = useAppDispatch();
-
 	// manage the showMore button
 	const [showMore, setShowMore] = useState(false);
 
-	// access handleSuccessModalOff and successModal state
-	const { handleSuccessModalOff, successModal } = useContext(ModalContext);
-	const router = useRouter();
-
-	// create slicedCart array
-	const [slicedCart, setSlicedCart] = useState<
-		SetStateAction<ChosenProduct[] | any>
-	>([]);
-	useEffect(() => setSlicedCart(cart.slice(1)), [cart]);
-
-	// reset cart and turn modal off
-	// when leaving page while successModal is true
-	useEffect(() => {
-		const handleRouteChange = () => {
-			if (successModal) {
-				dispatch(removeAll());
-				dispatch(resetId());
-				handleSuccessModalOff();
-			}
-		};
-
-		router.events.on('routeChangeStart', handleRouteChange);
-
-		return () => {
-			router.events.off('routeChangeStart', handleRouteChange);
-		};
-	}, [dispatch, handleSuccessModalOff, router.events, successModal]);
+	const { cart, total, slicedCart } = useSuccessModal();
 
 	return (
 		<motion.div
@@ -102,7 +68,7 @@ const SuccessModal = () => {
 					<h6 className="heading-6">$ {total + 50}</h6>
 				</div>
 			</div>
-			<Link href="/" className="btn btn--see-product">
+			<Link href="/" className="btn btn--see-product btn--very-long">
 				back to home
 			</Link>
 		</motion.div>
