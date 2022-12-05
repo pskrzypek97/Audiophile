@@ -68,7 +68,7 @@ const SuccessModal = () => {
 					<h6 className="heading-6">$ {total + 50}</h6>
 				</div>
 			</div>
-			<Link href="/" className="btn btn--see-product btn--very-long">
+			<Link href="/" className="btn btn--see-product btn--long">
 				back to home
 			</Link>
 		</motion.div>

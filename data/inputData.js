@@ -106,7 +106,7 @@ export const inputData = {
 			},
 			minLength: {
 				value: 3,
-				message: 'Country must be at least 3 characters long',
+				message: 'Country must be more than 3 characters long',
 			},
 			pattern: {
 				value: /^[A-Za-z]+$/,
@@ -139,11 +139,11 @@ export const inputData = {
 			},
 			minLength: {
 				value: 9,
-				message: 'Number must be at least 9 characters long',
+				message: 'Number must be 9 characters long',
 			},
 			maxLength: {
 				value: 9,
-				message: 'Number cannot be longer than 9 characters',
+				message: 'Number must be 9 characters long',
 			},
 			pattern: {
 				value: /^[0-9]+$/,
@@ -160,11 +160,11 @@ export const inputData = {
 			},
 			minLength: {
 				value: 4,
-				message: 'PIN must be at least 4 characters long',
+				message: 'PIN must be 4 characters long',
 			},
 			maxLength: {
 				value: 4,
-				message: 'PIN cannot be longer than 4 characters',
+				message: 'PIN must be 4 characters long',
 			},
 			pattern: {
 				value: /^[0-9]+$/,

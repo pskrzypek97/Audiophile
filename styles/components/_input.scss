@@ -142,9 +142,10 @@
 	&__error {
 		position: absolute;
 		right: 0;
-		top: 0.5rem;
+		top: 8.2rem;
 
 		font-size: 1.2rem;
+		line-height: 1.4;
 		font-weight: $font-weight-medium;
 		color: $color-error;
 	}
