@@ -57,7 +57,7 @@ const ProductPage = ({ product }: { product: ProductData }) => {
 
 	return (
 		<>
-			<HeadComp subtitle={product.name} />
+			<HeadComp title={product.name} />
 			{goBackButton}
 			<section className="product">
 				<Product product={product} />

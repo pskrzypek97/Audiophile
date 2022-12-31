@@ -65,7 +65,7 @@ const CategoryPage = ({ products }: { products: ProductData[] }) => {
 
 	return (
 		<>
-			<HeadComp subtitle={productsArr[0]?.category} />
+			<HeadComp title={productsArr[0]?.category} />
 			<Header category={productsArr[0]?.category} />
 			<section className="product">
 				{productsArr.map((product) => (

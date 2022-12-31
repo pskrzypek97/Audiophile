@@ -9,7 +9,7 @@ import HeadComp from '../components/Head/HeadComp';
 export default function Home() {
 	return (
 		<>
-			<HeadComp subtitle={'Home'} />
+			<HeadComp title={'Home'} />
 			<Header category={false} />
 			<Categories />
 			<Recommend />

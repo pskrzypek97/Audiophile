@@ -25,7 +25,7 @@ const CheckoutPage = () => {
 
 	const checkoutPage = (
 		<>
-			<HeadComp subtitle={'Checkout'} />
+			<HeadComp title={'Checkout'} />
 			<GoBackButton />
 
 			<section className="checkout-main">

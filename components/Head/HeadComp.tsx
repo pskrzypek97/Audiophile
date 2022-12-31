@@ -5,10 +5,10 @@ const capitalizeFirstLetter = (string: string) => {
 	return newStr;
 };
 
-const HeadComp = ({ subtitle }: { subtitle: string }) => {
+const HeadComp = ({ title }: { title: string }) => {
 	// modify title in separate variable so it doesn't show error:
 	// A title element received an array with more than 1 element as children
-	const capitalizedTitle = `${capitalizeFirstLetter(subtitle)} | Audiophile
+	const capitalizedTitle = `${capitalizeFirstLetter(title)} | Audiophile
 	e-commerce website`;
 
 	return (

@@ -7,7 +7,7 @@ import style from '../styles/page404.module.scss';
 const Page404 = () => {
 	return (
 		<>
-			<HeadComp subtitle={'Page not found'} />
+			<HeadComp title={'Page not found'} />
 
 			<section className={style.main}>
 				<h1 className="heading-1">404</h1>
